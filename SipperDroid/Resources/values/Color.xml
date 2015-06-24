@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+<color name="background">#2D99D3</color>
+<color name="white">#FFFFFF</color>
+<color name="gray">#C9C9CE</color>
+<color name="dark_gray">#BDBDC3</color>
+<color name="dark_black">#6B6766</color>
+<color name="dark_green">#98C436</color>
+<color name="black">#000000</color>
+<color name="purple">#783881</color>
+<color  name="blue">#4F85BA</color>
+<color name="red">#CF1A08</color>
+<color name="light_parot">#6AD232</color>
+<color name="orange">#FB8C00</color>
+<color name="parot">#7BB452</color>
+<color name="blue1">#0000ff</color>
+<color name="dark_red">#874146</color>
+<color name="btn_dashboard">#2A99D3</color>
+<color name="txt_dark_gray">#F3F2F3</color>
+<color name="txt_black">#3A3B3A</color>
+<color name="background_dark_gray">#EFEFEF</color>
+<color name="send_gray">#545454</color>
+<color name="blue_number">#4DB8B8</color>
+
+</resources>

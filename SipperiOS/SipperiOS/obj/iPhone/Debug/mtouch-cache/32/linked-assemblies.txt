@@ -1,0 +1,8 @@
+/Users/HariWepuri/Project/Sipper_New/repo/SipperiOS/SipperiOS/obj/iPhone/Debug/mtouch-cache/32/Link/BTProgressHUD.dll
+/Users/HariWepuri/Project/Sipper_New/repo/SipperiOS/SipperiOS/obj/iPhone/Debug/mtouch-cache/32/Link/SipperiOS.exe
+/Users/HariWepuri/Project/Sipper_New/repo/SipperiOS/SipperiOS/obj/iPhone/Debug/mtouch-cache/32/Link/System.dll
+/Users/HariWepuri/Project/Sipper_New/repo/SipperiOS/SipperiOS/obj/iPhone/Debug/mtouch-cache/32/Link/Xamarin.iOS.dll
+/Users/HariWepuri/Project/Sipper_New/repo/SipperiOS/SipperiOS/obj/iPhone/Debug/mtouch-cache/32/Link/System.Core.dll
+/Users/HariWepuri/Project/Sipper_New/repo/SipperiOS/SipperiOS/obj/iPhone/Debug/mtouch-cache/32/Link/mscorlib.dll
+/Users/HariWepuri/Project/Sipper_New/repo/SipperiOS/SipperiOS/obj/iPhone/Debug/mtouch-cache/32/Link/GoogleMaps.dll
+/Users/HariWepuri/Project/Sipper_New/repo/SipperiOS/SipperiOS/obj/iPhone/Debug/mtouch-cache/32/Link/Sipper.Service.dll

@@ -1,0 +1,20 @@
+﻿<Properties StartupItem="SipperiOS/SipperiOS.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6.8.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SipperiOS/AppDelegate.cs">
+    <Files>
+      <File FileName="../SipperDroid/SendSipper.cs" Line="58" Column="48" />
+      <File FileName="../SipperDroid/Properties/AndroidManifest.xml" Line="1" Column="1" />
+      <File FileName="../SipperDroid/DashBorad.cs" Line="1" Column="1" />
+      <File FileName="../SipperDroid/Adapter/CustomListView.cs" Line="1" Column="1" />
+      <File FileName="../../../../Downloads/GetLocation/Activity1.cs" Line="1" Column="1" />
+      <File FileName="SipperiOS/AppDelegate.cs" Line="33" Column="50" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/harry/Projects/SipperiOS/SipperiOS/ViewController/HomeScreenVC.cs" line="68" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.SipperDroid AndroidDesignerPreferredDevice="Nexus 4" AndroidDesignerPreferredTheme="Theme.Holo.Light.Dialog.NoActionBar" />
+</Properties>

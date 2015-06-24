@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StartingScreen">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_with_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="9zg-Ms-Zhg">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdD-TM-Gny">
+                    <rect key="frame" x="14" y="283" width="293" height="80"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="C7A-z0-23i"/>
+                        <constraint firstAttribute="width" constant="293" id="hGA-zP-ay5"/>
+                    </constraints>
+                    <string key="text">Sipper Uses location to show you
+quality stream of sipps in your area. To
+do that you will need to give us
+permission to use your location.</string>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1a-7m-lca">
+                    <rect key="frame" x="49" y="431" width="223" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="41" id="VHC-hl-DdO"/>
+                        <constraint firstAttribute="width" constant="223" id="Xge-Ud-iKf"/>
+                    </constraints>
+                    <state key="normal" image="btn_continue.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btn_Continue:" destination="-1" eventType="touchUpInside" id="Os6-EU-7HB"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="u1a-7m-lca" secondAttribute="centerX" id="0n3-Zo-tYW"/>
+                <constraint firstItem="u1a-7m-lca" firstAttribute="top" secondItem="fdD-TM-Gny" secondAttribute="bottom" constant="68" id="2Mw-rx-KG1"/>
+                <constraint firstItem="fdD-TM-Gny" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="283" id="4uG-ag-Dla"/>
+                <constraint firstItem="9zg-Ms-Zhg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="B5a-14-2Va"/>
+                <constraint firstAttribute="bottom" secondItem="9zg-Ms-Zhg" secondAttribute="bottom" id="FWw-TZ-boa"/>
+                <constraint firstAttribute="centerX" secondItem="fdD-TM-Gny" secondAttribute="centerX" id="Men-ax-2ZO"/>
+                <constraint firstItem="9zg-Ms-Zhg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="TAk-Zx-2am"/>
+                <constraint firstAttribute="trailing" secondItem="9zg-Ms-Zhg" secondAttribute="trailing" id="UYC-sC-Ntz"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="bg_with_logo.png" width="320" height="568"/>
+        <image name="btn_continue.png" width="223" height="41"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

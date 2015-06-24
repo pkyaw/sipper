@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{8AF94BD5-E508-4277-B70A-B0A8E6ECF1E0}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SipperiOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>SipperiOS</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>i386</MtouchArch>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchProfiling>true</MtouchProfiling>
+    <CodesignKey>iPhone Distribution: RezTech LLC (7GSX52HKQY)</CodesignKey>
+    <CodesignProvision>e1ffdb91-6fe7-4cd5-8d5b-2b4924306d90</CodesignProvision>
+    <MtouchSdkVersion>8.1</MtouchSdkVersion>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>i386</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <MtouchLink>None</MtouchLink>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchProfiling>true</MtouchProfiling>
+    <CodesignKey>iPhone Developer: Satish Mugala (XR297929LH)</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
+    <CodesignProvision>38e8239a-8aa9-490e-b8ee-80fbab59186f</CodesignProvision>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="Calabash">
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.14.1\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+    </Reference>
+    <Reference Include="Sipper.Core">
+      <HintPath>..\..\..\..\..\Downloads\Sipper-PCL\Sipper.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sipper.Service">
+      <HintPath>..\..\..\..\..\Downloads\Sipper-PCL\Sipper.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="BTProgressHUD">
+      <HintPath>..\Components\btprogresshud-1.16\lib\ios-unified\BTProgressHUD.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMaps">
+      <HintPath>..\Components\googlemapsios-1.9.2\lib\ios-unified\GoogleMaps.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
+    <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="ViewController\HomeScreenVC_iPhone.xib" />
+    <InterfaceDefinition Include="ViewController\StartingScreen_iPhone.xib" />
+    <InterfaceDefinition Include="ViewController\TabBarController.xib" />
+    <InterfaceDefinition Include="Cell\HomeScreenCell.xib" />
+    <InterfaceDefinition Include="ViewController\PeekViewController.xib" />
+    <InterfaceDefinition Include="ViewController\MeViewController.xib" />
+    <InterfaceDefinition Include="ViewController\moreViewController.xib" />
+    <InterfaceDefinition Include="Cell\MoreScreenCell.xib" />
+    <InterfaceDefinition Include="ViewController\sendSipperViewController.xib" />
+    <InterfaceDefinition Include="ViewController\DetailsViewController.xib" />
+    <InterfaceDefinition Include="Cell\DetailScreenCell.xib" />
+    <InterfaceDefinition Include="ViewController\WebViewController.xib" />
+    <InterfaceDefinition Include="Cell\HomeCell.xib" />
+    <InterfaceDefinition Include="ViewController\FlagViewController.xib" />
+    <InterfaceDefinition Include="ViewController\FlagView.xib" />
+    <InterfaceDefinition Include="ViewController\MapViewController.xib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+    <None Include="Font\OpenSans-Bold.ttf" />
+    <None Include="Font\OpenSans-BoldItalic.ttf" />
+    <None Include="Font\OpenSans-ExtraBold.ttf" />
+    <None Include="Font\OpenSans-ExtraBoldItalic.ttf" />
+    <None Include="Font\OpenSans-Italic.ttf" />
+    <None Include="Font\OpenSans-Light.ttf" />
+    <None Include="Font\OpenSans-LightItalic.ttf" />
+    <None Include="Font\OpenSans-Regular.ttf" />
+    <None Include="Font\OpenSans-Semibold.ttf" />
+    <None Include="Font\OpenSans-SemiboldItalic.ttf" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="ViewController.cs" />
+    <Compile Include="ViewController.designer.cs">
+      <DependentUpon>ViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\HomeScreenVC.cs" />
+    <Compile Include="ViewController\HomeScreenVC.designer.cs">
+      <DependentUpon>HomeScreenVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\StartingScreen.cs" />
+    <Compile Include="ViewController\StartingScreen.designer.cs">
+      <DependentUpon>StartingScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\TabBarController.cs" />
+    <Compile Include="ViewController\TabBarController.designer.cs">
+      <DependentUpon>TabBarController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\HomeScreenCell.cs" />
+    <Compile Include="Cell\HomeScreenCell.designer.cs">
+      <DependentUpon>HomeScreenCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account.cs" />
+    <Compile Include="ViewController\PeekViewController.cs" />
+    <Compile Include="ViewController\PeekViewController.designer.cs">
+      <DependentUpon>PeekViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\MeViewController.cs" />
+    <Compile Include="ViewController\MeViewController.designer.cs">
+      <DependentUpon>MeViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\moreViewController.cs" />
+    <Compile Include="ViewController\moreViewController.designer.cs">
+      <DependentUpon>moreViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\MoreScreenCell.cs" />
+    <Compile Include="Cell\MoreScreenCell.designer.cs">
+      <DependentUpon>MoreScreenCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\sendSipperViewController.cs" />
+    <Compile Include="ViewController\sendSipperViewController.designer.cs">
+      <DependentUpon>sendSipperViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\DetailsViewController.cs" />
+    <Compile Include="ViewController\DetailsViewController.designer.cs">
+      <DependentUpon>DetailsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\DetailScreenCell.cs" />
+    <Compile Include="Cell\DetailScreenCell.designer.cs">
+      <DependentUpon>DetailScreenCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\WebViewController.cs" />
+    <Compile Include="ViewController\WebViewController.designer.cs">
+      <DependentUpon>WebViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\HomeCell.cs" />
+    <Compile Include="Cell\HomeCell.designer.cs">
+      <DependentUpon>HomeCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\FlagViewController.cs" />
+    <Compile Include="ViewController\FlagViewController.designer.cs">
+      <DependentUpon>FlagViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\FlagView.cs" />
+    <Compile Include="ViewController\FlagView.designer.cs">
+      <DependentUpon>FlagView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\MapViewController.cs" />
+    <Compile Include="ViewController\MapViewController.designer.cs">
+      <DependentUpon>MapViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppData.cs" />
+    <Compile Include="Location\LocationManager.cs" />
+    <Compile Include="Location\LocationUpdateEventArgs.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="ViewController\" />
+    <Folder Include="Font\" />
+    <Folder Include="Cell\" />
+    <Folder Include="Location\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg_with_logo.png" />
+    <BundleResource Include="Resources\bg_with_logo%402x.png" />
+    <BundleResource Include="Resources\bg_with_logo%403x.png" />
+    <BundleResource Include="Resources\btn_continue.png" />
+    <BundleResource Include="Resources\btn_continue%402x.png" />
+    <BundleResource Include="Resources\btn_continue%403x.png" />
+    <BundleResource Include="Resources\btn_tab_home_blue.png" />
+    <BundleResource Include="Resources\btn_tab_home_blue%402x.png" />
+    <BundleResource Include="Resources\btn_tab_home_blue%403x.png" />
+    <BundleResource Include="Resources\btn_tab_home_gray.png" />
+    <BundleResource Include="Resources\btn_tab_home_gray%402x.png" />
+    <BundleResource Include="Resources\btn_tab_home_gray%403x.png" />
+    <BundleResource Include="Resources\btn_tab_hot_off.png" />
+    <BundleResource Include="Resources\btn_tab_hot_off%402x.png" />
+    <BundleResource Include="Resources\btn_tab_hot_off%403x.png" />
+    <BundleResource Include="Resources\btn_tab_hot_on.png" />
+    <BundleResource Include="Resources\btn_tab_hot_on%402x.png" />
+    <BundleResource Include="Resources\btn_tab_hot_on%403x.png" />
+    <BundleResource Include="Resources\btn_tab_me_blue.png" />
+    <BundleResource Include="Resources\btn_tab_me_blue%402x.png" />
+    <BundleResource Include="Resources\btn_tab_me_blue%403x.png" />
+    <BundleResource Include="Resources\btn_tab_me_gray.png" />
+    <BundleResource Include="Resources\btn_tab_me_gray%402x.png" />
+    <BundleResource Include="Resources\btn_tab_me_gray%403x.png" />
+    <BundleResource Include="Resources\btn_tab_more_blue.png" />
+    <BundleResource Include="Resources\btn_tab_more_blue%402x.png" />
+    <BundleResource Include="Resources\btn_tab_more_blue%403x.png" />
+    <BundleResource Include="Resources\btn_tab_more_gray.png" />
+    <BundleResource Include="Resources\btn_tab_more_gray%402x.png" />
+    <BundleResource Include="Resources\btn_tab_more_gray%403x.png" />
+    <BundleResource Include="Resources\btn_tab_new_off.png" />
+    <BundleResource Include="Resources\btn_tab_new_off%402x.png" />
+    <BundleResource Include="Resources\btn_tab_new_off%403x.png" />
+    <BundleResource Include="Resources\btn_tab_new_on.png" />
+    <BundleResource Include="Resources\btn_tab_new_on%402x.png" />
+    <BundleResource Include="Resources\btn_tab_new_on%403x.png" />
+    <BundleResource Include="Resources\btn_tab_peek_blue.png" />
+    <BundleResource Include="Resources\btn_tab_peek_blue%402x.png" />
+    <BundleResource Include="Resources\btn_tab_peek_blue%403x.png" />
+    <BundleResource Include="Resources\btn_tab_peek_gray.png" />
+    <BundleResource Include="Resources\btn_tab_peek_gray%402x.png" />
+    <BundleResource Include="Resources\btn_tab_peek_gray%403x.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\ic_arrow_down.png" />
+    <BundleResource Include="Resources\ic_arrow_down%402x.png" />
+    <BundleResource Include="Resources\ic_arrow_down%403x.png" />
+    <BundleResource Include="Resources\ic_arrow_up.png" />
+    <BundleResource Include="Resources\ic_arrow_up%402x.png" />
+    <BundleResource Include="Resources\ic_arrow_up%403x.png" />
+    <BundleResource Include="Resources\ic_dot_lightpink%403x.png" />
+    <BundleResource Include="Resources\ic_home_tabbb%402x.png" />
+    <BundleResource Include="Resources\ic_reload_thin%403x.png" />
+    <BundleResource Include="Resources\ic_search_gray%403x.png" />
+    <BundleResource Include="Resources\btn_nav_edit.png" />
+    <BundleResource Include="Resources\btn_nav_edit%402x.png" />
+    <BundleResource Include="Resources\btn_nav_edit%403x.png" />
+    <BundleResource Include="Resources\ic_dots_Black.png" />
+    <BundleResource Include="Resources\ic_right_arrow_thin.png" />
+    <BundleResource Include="Resources\img_seg_hot.png" />
+    <BundleResource Include="Resources\img_seg_hot%402x.png" />
+    <BundleResource Include="Resources\img_seg_hot%403x.png" />
+    <BundleResource Include="Resources\img_seg_new.png" />
+    <BundleResource Include="Resources\img_seg_new%402x.png" />
+    <BundleResource Include="Resources\img_seg_new%403x.png" />
+    <BundleResource Include="Resources\ic_actionbar_flag.png" />
+    <BundleResource Include="Resources\ic_actionbar_flag%402x.png" />
+    <BundleResource Include="Resources\ic_actionbar_flag%403x.png" />
+    <BundleResource Include="Resources\ic_mushroom_violet.png" />
+    <BundleResource Include="Resources\ic_mushroom_violet%402x.png" />
+    <BundleResource Include="Resources\ic_mushroom_violet%403x.png" />
+    <BundleResource Include="Resources\ic_op_blue.png" />
+    <BundleResource Include="Resources\ic_op_blue%402x.png" />
+    <BundleResource Include="Resources\ic_op_blue%403x.png" />
+    <BundleResource Include="Resources\ic_peek_orange.png" />
+    <BundleResource Include="Resources\ic_peek_orange%402x.png" />
+    <BundleResource Include="Resources\ic_peek_orange%403x.png" />
+    <BundleResource Include="Resources\ic_peek_violet.png" />
+    <BundleResource Include="Resources\ic_peek_violet%402x.png" />
+    <BundleResource Include="Resources\ic_peek_violet%403x.png" />
+    <BundleResource Include="Resources\ic_share_thin.png" />
+    <BundleResource Include="Resources\ic_share_thin%402x.png" />
+    <BundleResource Include="Resources\ic_share_thin%403x.png" />
+    <BundleResource Include="Resources\ic_user.png" />
+    <BundleResource Include="Resources\ic_user%402x.png" />
+    <BundleResource Include="Resources\ic_user%403x.png" />
+    <BundleResource Include="Resources\btn_share.png" />
+    <BundleResource Include="Resources\btn_share%402x.png" />
+    <BundleResource Include="Resources\btn_share%403x.png" />
+    <BundleResource Include="Resources\ic_alert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="btprogresshud">
+      <Version>1.16</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="googlemapsios">
+      <Version>1.9.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
+</Project>

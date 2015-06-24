@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{AB2DDFB0-A65B-478C-BE3F-8E6294F85195}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SipperDroid</RootNamespace>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
+    <AssemblyName>SipperDroid</AssemblyName>
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <ConsolePause>false</ConsolePause>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Android.Export" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Json" />
+    <Reference Include="Sipper.Core">
+      <HintPath>..\..\..\..\Downloads\Sipper-PCL\Sipper.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sipper.Service">
+      <HintPath>..\..\..\..\Downloads\Sipper-PCL\Sipper.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>..\SipperiOS\packages\Xamarin.Android.Support.v4.22.2.0.0\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.AppCompat">
+      <HintPath>..\SipperiOS\packages\Xamarin.Android.Support.v7.AppCompat.22.2.0.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.PagerSlidingTabStrip">
+      <HintPath>..\SipperiOS\packages\Refractored.PagerSlidingTabStrip.1.0.9.4\lib\MonoAndroid10\Refractored.PagerSlidingTabStrip.dll</HintPath>
+    </Reference>
+    <Reference Include="GooglePlayServicesLib">
+      <HintPath>..\SipperiOS\packages\Xamarin.GooglePlayServices.22.0.0.2\lib\MonoAndroid41\GooglePlayServicesLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
+      <HintPath>..\SipperiOS\packages\Xamarin.Android.Support.v7.MediaRouter.22.2.0.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DashBorad.cs" />
+    <Compile Include="Adapter\CustomListView.cs" />
+    <Compile Include="post.cs" />
+    <Compile Include="DashBoardListViewDetail.cs" />
+    <Compile Include="custom_dialog.cs" />
+    <Compile Include="PeekActivity.cs" />
+    <Compile Include="MoreActivity.cs" />
+    <Compile Include="Fonts\FontOpenSans.cs" />
+    <Compile Include="MeActivity.cs" />
+    <Compile Include="TabBarActivity.cs" />
+    <Compile Include="Fragment\FirstFragment.cs" />
+    <Compile Include="Fragment\SecondFragment.cs" />
+    <Compile Include="Adapter\CustomListViewDetail.cs" />
+    <Compile Include="SendSipper.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="MapActivity.cs" />
+    <Compile Include="Fragment\DetailDialogFragment.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Main.axml" />
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\values\Color.xml" />
+    <AndroidResource Include="Resources\drawable\backgroud.xml" />
+    <AndroidResource Include="Resources\layout\dashboard.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Icon_iOS_512.png" />
+    <AndroidResource Include="Resources\layout\list_view_adapter.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_arrow_down.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_arrow_up.png" />
+    <AndroidResource Include="Resources\drawable\btn_dashboard.xml" />
+    <AndroidResource Include="Resources\layout\dashboard_listview_detail.axml" />
+    <AndroidResource Include="Resources\drawable\edittext_background.xml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_menu.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_menu.png" />
+    <AndroidResource Include="Resources\layout\custom_dialog.axml" />
+    <AndroidResource Include="Resources\anim\Rotate.xml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_add.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_add.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_add.png" />
+    <AndroidResource Include="Resources\drawable\edittext_border.xml" />
+    <AndroidResource Include="Resources\layout\peek_activity.axml" />
+    <AndroidResource Include="Resources\layout\more_activity.axml" />
+    <AndroidResource Include="Resources\layout\access_location_dialog.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_actionbar_edit.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_actionbar_search.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_tab_hot_off.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_tab_hot_on.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_tab_new_off.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_tab_new_on.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_arrow_down.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_arrow_up.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_dot_lightpink.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_reload_thin.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_right_arrow_thin.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_search_gray.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\btn_actionbar_edit.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\btn_actionbar_search.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\btn_tab_hot_off.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\btn_tab_hot_on.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\btn_tab_new_off.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\btn_tab_new_on.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_arrow_down.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_arrow_up.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_dot_lightpink.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_reload_thin.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_right_arrow_thin.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_search_gray.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\btn_actionbar_edit.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\btn_actionbar_search.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\btn_tab_hot_off.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\btn_tab_hot_on.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\btn_tab_new_off.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\btn_tab_new_on.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_dot_lightpink.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_reload_thin.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_right_arrow_thin.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_search_gray.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\bg_with_logo.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\bg_with_logo.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\bg_with_logo.png" />
+    <AndroidResource Include="Resources\layout\me_activity.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_user_location.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_user_location.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_user_location.png" />
+    <AndroidResource Include="Resources\layout\activity_main_tab.axml" />
+    <AndroidResource Include="Resources\layout\TabHostActivity.axml" />
+    <AndroidResource Include="Resources\drawable\dashboard_selector.xml" />
+    <AndroidResource Include="Resources\drawable\peek_selector.xml" />
+    <AndroidResource Include="Resources\drawable\me_selector.xml" />
+    <AndroidResource Include="Resources\drawable\more_selector.xml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\home.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\me.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\peek.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\more.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\home_blue.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\me_blue.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\more_blue.png" />
+    <AndroidResource Include="Resources\layout\Indicator.axml" />
+    <AndroidResource Include="Resources\layout\notification_fragment.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_tab_home_blue.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_tab_home_gray.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_tab_me_blue.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_tab_me_gray.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_tab_more_blue.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_tab_more_gray.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_tab_peek_blue.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_tab_peek_gray.png" />
+    <AndroidResource Include="Resources\layout\dashboard_listview_detail_Adapter.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_actionbar_flag.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_mushroom_violet.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_op_blue.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_peek_orange.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_peek_violet.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_share_thin.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_user.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_actionbar_flag.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_mushroom_violet.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_op_blue.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_peek_orange.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_peek_violet.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_share_thin.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_user.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_actionbar_flag.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_mushroom_violet.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_op_blue.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_peek_orange.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_peek_violet.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_share_thin.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_user.png" />
+    <AndroidResource Include="Resources\layout\sendsipper.axml" />
+    <AndroidResource Include="Resources\drawable\cursor.xml" />
+    <AndroidResource Include="Resources\drawable\list_item_select.xml" />
+    <AndroidResource Include="Resources\layout\footer_layout.axml" />
+    <AndroidResource Include="Resources\layout\map_activity.axml" />
+    <AndroidResource Include="Resources\layout\dialog_fragment.axml" />
+    <AndroidResource Include="Resources\drawable\btn_cancel.xml" />
+    <AndroidResource Include="Resources\drawable\Dialog_background.xml" />
+    <AndroidResource Include="Resources\drawable\btn_yes_flag.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_alert.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_alert.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\peek_blue.png">
+      <DependentUpon>ic_user_location.png</DependentUpon>
+    </AndroidResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Resources\drawable\" />
+    <Folder Include="Adapter\" />
+    <Folder Include="Resources\anim\" />
+    <Folder Include="Fonts\" />
+    <Folder Include="Assets\fonts\" />
+    <Folder Include="Fragment\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\fonts\Apache License.txt" />
+    <AndroidAsset Include="Assets\fonts\OpenSans-Bold.ttf" />
+    <AndroidAsset Include="Assets\fonts\OpenSans-BoldItalic.ttf" />
+    <AndroidAsset Include="Assets\fonts\OpenSans-ExtraBold.ttf" />
+    <AndroidAsset Include="Assets\fonts\OpenSans-ExtraBoldItalic.ttf" />
+    <AndroidAsset Include="Assets\fonts\OpenSans-Italic.ttf" />
+    <AndroidAsset Include="Assets\fonts\OpenSans-Light.ttf" />
+    <AndroidAsset Include="Assets\fonts\OpenSans-LightItalic.ttf" />
+    <AndroidAsset Include="Assets\fonts\OpenSans-Regular.ttf" />
+    <AndroidAsset Include="Assets\fonts\OpenSans-Semibold.ttf" />
+    <AndroidAsset Include="Assets\fonts\OpenSans-SemiboldItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="PagerSlidingTabStrip">
+      <Version>1.0.9</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="googleplayservices">
+      <Version>22.0.0.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <TextStylePolicy inheritsSet="null" scope="application/xml" />
+          <XmlFormattingPolicy inheritsSet="Mono" inheritsScope="application/xml" scope="application/xml">
+            <DefaultFormat AttributesInNewLine="True" />
+          </XmlFormattingPolicy>
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <ProjectReference Include="..\SipperiOS\SipperPCL\SipperPCL.csproj">
+      <Project>{EE7C91E6-50D8-42A9-83C2-0C950C71774B}</Project>
+      <Name>SipperPCL</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

@@ -153,7 +153,7 @@
                 <constraint firstAttribute="bottom" secondItem="D9L-Gu-Mro" secondAttribute="bottom" id="y9A-c6-4xO"/>
                 <constraint firstItem="9ay-Y6-tHS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ysD-2p-v13"/>
             </constraints>
-            <point key="canvasLocation" x="100" y="436"/>
+            <point key="canvasLocation" x="173" y="430"/>
         </view>
     </objects>
     <resources>

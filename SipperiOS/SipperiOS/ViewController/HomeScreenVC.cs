@@ -3,16 +3,15 @@ using System;
 using System.Drawing;
 using Foundation;
 using System.Collections.Generic;
-
 using UIKit;
 using ObjCRuntime;
 using CoreGraphics;
-using Sipper.Service.Interfaces;
-using Sipper.Service.Fakes;
-using Sipper.Service.Models.v1;
 using BigTed;
-using Sipper.Service;
 using System.Threading.Tasks;
+using Sipper.Service.Core.Models.v1;
+using Sipper.Service.Core.Interfaces.v1;
+using Autofac;
+using Newtonsoft.Json;
 
 
 namespace SipperiOS
@@ -44,55 +43,177 @@ namespace SipperiOS
 			base.ViewWillAppear (animated);
 			this.NavigationController.NavigationBar.Hidden =  false;
 			//this.NavigationController.NavigationBar.Hidden = true;
-			Task<List<SippModel>> sipps = getSippsList ();
+
+
+			//ListSipp = getNewSippList ();
 
 			//ListSipp = result.Result;
-			if (sipps.IsCompleted){
-				ListSipp = sipps.Result;
-				Console.WriteLine (sipps.Status);
-				//lblCount.Text = Convert.ToString (ListSipp.Count);
-				this.NavigationItem.SetLeftBarButtonItem (new UIBarButtonItem(ListSipp.Count.ToString(),UIBarButtonItemStyle.Plain, (sender, args) => {
-				}), true);
-				Console.WriteLine (ListSipp.Count);
-				BTProgressHUD.Dismiss ();
-			} else {
-				Console.WriteLine (sipps.Status);
-				BTProgressHUD.Dismiss ();
-			}
-			pageIndex=0;
-			tableView.Source = new TableSource (loadMore(), this,this.tableView);
-			tableView.ReloadData ();
+//			if (sipps.IsCompleted){
+//				ListSipp = sipps.Result;
+//				Console.WriteLine (sipps.Status);
+//				//lblCount.Text = Convert.ToString (ListSipp.Count);
+//				
+//				Console.WriteLine (ListSipp.Count);
+//				BTProgressHUD.Dismiss ();
+//			} else {
+//				Console.WriteLine (sipps.Status);
+//				BTProgressHUD.Dismiss ();
+//			}
+			//pageIndex=0;
 
+
+		}
+		public override void ViewDidAppear (bool animated)
+		{
+			base.ViewDidAppear (animated);
+			getSippList();
 		}
 		void refreshTableHandler(object sender, EventArgs e)
 		{
-			Task<List<SippModel>> sipps = getSippsList ();
-			if (sipps.IsCompleted){
-				ListSipp = sipps.Result;
-				Console.WriteLine (sipps.Status);
-				lblCount.Text = Convert.ToString (ListSipp.Count);
-				Console.WriteLine (ListSipp.Count);
-				tableView.ReloadData ();
-				BTProgressHUD.Dismiss ();
+			getSippList();
 
-			} else {
-				Console.WriteLine (sipps.Status);
-				BTProgressHUD.Dismiss ();
-
-			}
+			//tableView.ReloadData ();
+//			if (sipps.IsCompleted){
+//				ListSipp = sipps.Result;
+//				Console.WriteLine (sipps.Status);
+//				lblCount.Text = Convert.ToString (ListSipp.Count);
+//				Console.WriteLine (ListSipp.Count);
+//				
+//				BTProgressHUD.Dismiss ();
+//
+//			} else {
+//				Console.WriteLine (sipps.Status);
+//				BTProgressHUD.Dismiss ();
+//
+//			}
 			if (this.refreshControl!=null) {
 				this.refreshControl.EndRefreshing ();
 			}
 		}
-		public async Task<List<SippModel>> getSippsList()
+		public async void getSippList()
 		{
-			BTProgressHUD.Show("Getting Sipps...");
+			
 
-			ISippService _service = new SippServiceFake();
-			var sipps = await _service.GetAllSippsAsync();
-			return sipps;
+			if(segmentControll.SelectedSegment == 1)
+			{
+				BTProgressHUD.Show("Getting Hot Sipp...",-1,ProgressHUD.MaskType.Gradient);
+			}
+			else
+			{
+				BTProgressHUD.Show("Getting New Sipp...",-1,ProgressHUD.MaskType.Gradient);
+			}
+			try
+			{
+				var container = Setup.RegisterContainerBuilder ();
 
+				using (var scope = container.BeginLifetimeScope())
+				{
+					var sippService = scope.Resolve<ISippService>();
+
+					if(segmentControll.SelectedSegment == 1)
+					{
+						ListSipp = await sippService.GetSippsAsync(skip:0,take:20, sippType:SippType.Hot);
+					}
+					else
+					{
+						ListSipp = await sippService.GetSippsAsync(skip:0,take:20, sippType:SippType.New);
+					}
+
+
+					if (ListSipp == null) 
+					{
+						System.Console.WriteLine("Error");
+					}
+					else
+					{
+						this.NavigationItem.SetLeftBarButtonItem (new UIBarButtonItem(ListSipp.Count.ToString(),UIBarButtonItemStyle.Plain, (sender, args) => {
+
+						}), true);
+
+						tableFooterView = new UIView (new CGRect(0,0,UIScreen.MainScreen.Bounds.Width,44));
+						tableFooterView.BackgroundColor = UIColor.Clear;
+						tableFooterMoreButton = new UIButton (new CGRect(0,0,tableFooterView.Bounds.Width,44));
+						tableFooterMoreButton.SetTitle ("More", UIControlState.Normal);
+						//tableFooterMoreButton.TintColor = UIColor.Blue;
+						tableFooterMoreButton.SetTitleColor(UIColor.FromRGB(45,154,212),UIControlState.Normal);
+						tableFooterMoreButton.TouchUpInside += tableFooterMoreButtonClicked;
+							
+
+						tableFooterView.AddSubview (tableFooterMoreButton);
+
+						tableView.TableFooterView = tableFooterView;
+						tableView.Source = new TableSource (ListSipp, this,this.tableView);
+						tableView.ReloadData ();
+						System.Console.WriteLine("Get New Sipps: " + JsonConvert.SerializeObject(ListSipp, Formatting.Indented));
+					}
+				}
+				BTProgressHUD.Dismiss ();
+			}
+			catch(Exception e) {
+				Console.WriteLine ("Error :{0} ", e.Message.ToString ());
+				BTProgressHUD.Dismiss ();
+			}
 		}
+
+//		public async void getHotSippList()
+//		{
+//			BTProgressHUD.Show("Getting Hot Sipp...",-1,ProgressHUD.MaskType.Gradient);
+//			//BTProgressHUD.Show("Getting Hot Sipp...");
+//			try
+//			{
+//				var container = Setup.RegisterContainerBuilder ();
+//
+//				using (var scope = container.BeginLifetimeScope())
+//				{
+//					var sippService = scope.Resolve<ISippService>();
+//					ListSipp = await sippService.GetSippsAsync(skip:0,take:20, sippType:SippType.Hot);
+//
+//					if (ListSipp == null) 
+//					{
+//						System.Console.WriteLine("Error");
+//					}
+//					else
+//					{
+//						this.NavigationItem.SetLeftBarButtonItem (new UIBarButtonItem(ListSipp.Count.ToString(),UIBarButtonItemStyle.Plain, (sender, args) => {
+//
+//						}), true);
+//
+//						tableFooterView = new UIView (new CGRect(0,0,UIScreen.MainScreen.Bounds.Width,44));
+//						tableFooterView.BackgroundColor = UIColor.Clear;
+//						tableFooterMoreButton = new UIButton (new CGRect(0,0,tableFooterView.Bounds.Width,44));
+//						tableFooterMoreButton.SetTitle ("More", UIControlState.Normal);
+//						//tableFooterMoreButton.TintColor = UIColor.Blue;
+//						tableFooterMoreButton.SetTitleColor(UIColor.FromRGB(45,154,212),UIControlState.Normal);
+//						tableFooterMoreButton.TouchUpInside += async (object sender, EventArgs e) => {
+//
+//							ListSipp = await sippService.GetSippsAsync(skip:ListSipp.Count,take:20, sippType:SippType.Hot);
+//							if (ListSipp == null) 
+//							{
+//								System.Console.WriteLine("Error");
+//							}
+//							tableView.ReloadData ();
+//						};
+//						tableFooterView.AddSubview (tableFooterMoreButton);
+//
+//						tableView.TableFooterView = tableFooterView;
+//						tableView.Source = new TableSource (ListSipp, this,this.tableView);
+//						tableView.ReloadData ();
+//						System.Console.WriteLine("Get Hot Sipps: " + JsonConvert.SerializeObject(ListSipp, Formatting.Indented));
+//					}
+//				}
+//				BTProgressHUD.Dismiss ();
+//			}
+//			catch(Exception e) {
+//				Console.WriteLine ("Error : ", e.Message.ToString ());
+//				BTProgressHUD.Dismiss ();
+//			}
+//		}
+//		public async Task<List<SippModel>> getSippsList()
+//		{
+//			
+//			return sipps;
+//
+//		}
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -102,20 +223,8 @@ namespace SipperiOS
 			refreshControl.TintColor = UIColor.Black;
 			refreshControl.AddTarget(refreshTableHandler, UIControlEvent.ValueChanged);
 			tableView.AddSubview (refreshControl);
-			tableFooterView = new UIView (new CGRect(0,0,UIScreen.MainScreen.Bounds.Width,44));
-			tableFooterView.BackgroundColor = UIColor.Clear;
-			tableFooterMoreButton = new UIButton (new CGRect(0,0,tableFooterView.Bounds.Width,44));
-			tableFooterMoreButton.SetTitle ("More", UIControlState.Normal);
-			//tableFooterMoreButton.TintColor = UIColor.Blue;
-			tableFooterMoreButton.SetTitleColor(UIColor.FromRGB(45,154,212),UIControlState.Normal);
-			tableFooterMoreButton.TouchUpInside += (object sender, EventArgs e) => {
-				
-				tableView.Source = new TableSource (loadMore(), this,this.tableView);
-				tableView.ReloadData ();
-			};
-			tableFooterView.AddSubview (tableFooterMoreButton);
 
-			tableView.TableFooterView = tableFooterView;
+
 
 			//this.NavigationController.NavigationBar.Hidden = true;
 
@@ -142,7 +251,13 @@ namespace SipperiOS
 			segmentControll = new UISegmentedControl(tab);
 			segmentControll.Frame = new CGRect (0,0,123,29);
 			segmentControll.ControlStyle = UISegmentedControlStyle.Bordered;
-
+			segmentControll.SelectedSegment = 0;
+			segmentControll.ValueChanged += (sender, e) => {
+				var selectedSegmentId = (sender as UISegmentedControl).SelectedSegment;
+				Console.WriteLine("selectedSegmentId : {0}",segmentControll.SelectedSegment);
+				getSippList();
+				// do something with selectedSegmentId
+			};
 			this.NavigationItem.TitleView = segmentControll;
 
 //			UILabel leftNavigationLabel = new UILabel (new CGRect(0, 0, 100, 21));
@@ -187,7 +302,49 @@ namespace SipperiOS
 		{
 			
 		}
+		public async void tableFooterMoreButtonClicked(object sender, EventArgs e)
+		{
+			if(segmentControll.SelectedSegment == 1)
+			{
+				BTProgressHUD.Show("Getting Hot Sipp...",-1,ProgressHUD.MaskType.Gradient);
+			}
+			else
+			{
+				BTProgressHUD.Show("Getting New Sipp...",-1,ProgressHUD.MaskType.Gradient);
+			}
+			List<SippModel> ListSippNext;
+			var container = Setup.RegisterContainerBuilder ();
+			using (var scope = container.BeginLifetimeScope())
+			{
+				var sippService = scope.Resolve<ISippService>();
+				if(segmentControll.SelectedSegment == 1)
+				{
+					ListSippNext = await sippService.GetSippsAsync(skip:ListSipp.Count,take:20, sippType:SippType.Hot);
+				}
+				else
+				{
+					ListSippNext = await sippService.GetSippsAsync(skip:ListSipp.Count,take:20, sippType:SippType.New);
+				}
 
+				if (ListSippNext == null) 
+				{
+					System.Console.WriteLine("Error");
+					BTProgressHUD.Dismiss();
+				}
+				else
+				{
+					ListSipp.AddRange(ListSippNext);
+					tableFooterView.AddSubview (tableFooterMoreButton);
+					tableView.TableFooterView = tableFooterView;
+					this.NavigationItem.LeftBarButtonItem.Title = ListSipp.Count.ToString ();
+					tableView.Source = new TableSource (ListSipp, this,this.tableView);
+					tableView.ReloadData ();
+					System.Console.WriteLine("Get Next New Sipps: " + JsonConvert.SerializeObject(ListSippNext, Formatting.Indented));
+					BTProgressHUD.Dismiss();
+				}
+
+			}
+		}
 
 
 
@@ -200,18 +357,18 @@ namespace SipperiOS
 //		}
 		public List<SippModel> loadMore()
 		{
-			List<SippModel> s;
-			pageIndex = pageIndex + 20;
-			if (pageIndex <= this.ListSipp.Count) {
-				s = this.ListSipp.GetRange (0, pageIndex);
-
-				return s;
-			} else {
-				s = this.ListSipp.GetRange (0, this.ListSipp.Count);
-
-				return s;
-			}
-
+//			List<SippModel> s;
+//			pageIndex = pageIndex + 20;
+//			if (pageIndex <= this.ListSipp.Count) {
+//				s = this.ListSipp.GetRange (0, pageIndex);
+//
+//				return s;
+//			} else {
+//				s = this.ListSipp.GetRange (0, this.ListSipp.Count);
+//
+//				return s;
+//			}
+			return null;
 		}
 	}
 
@@ -277,7 +434,13 @@ namespace SipperiOS
 			if (cell == null)
 				cell = new HomeScreenCell (UITableViewCellStyle.Default, "HomeCell");
 		
-			cell.UpdateCell (ListSipp [indexPath.Row].Text, Convert.ToString(ListSipp [indexPath.Row].CreatedUtc), Convert.ToString(ListSipp [indexPath.Row].RepliesCount), ListSipp [indexPath.Row].UpVoteCount - ListSipp [indexPath.Row].DownVoteCount,ListSipp [indexPath.Row].Handle);
+			DateTime iKnowThisIsUtc = ListSipp[indexPath.Row].CreatedUtc;
+			DateTime runtimeKnowsThisIsUtc = DateTime.SpecifyKind(
+				iKnowThisIsUtc,
+				DateTimeKind.Utc);
+			DateTime localVersion = runtimeKnowsThisIsUtc.ToLocalTime();
+
+			cell.UpdateCell (ListSipp [indexPath.Row].Text, localVersion, Convert.ToString(ListSipp [indexPath.Row].RepliesCount), ListSipp [indexPath.Row].UpVoteCount - ListSipp [indexPath.Row].DownVoteCount,ListSipp [indexPath.Row].Handle);
 		
 
 
@@ -423,82 +586,75 @@ namespace SipperiOS
 
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
-
 			Console.WriteLine(ListSipp[indexPath.Row]);
-		
 			DetailsViewController DetailView = new DetailsViewController (ListSipp[indexPath.Row]);
 			DetailView.HidesBottomBarWhenPushed = true;
 			this.homeVC.NavigationController.PushViewController (DetailView, true);
-//
-//			MapViewController DetailView = new MapViewController ();
-//			DetailView.HidesBottomBarWhenPushed = true;
-//			this.homeVC.NavigationController.PushViewController (DetailView, true);
-//		}
 		}
 		public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 		{
 			return 120f;
 		}
-		public override void CommitEditingStyle (UITableView tableView, UITableViewCellEditingStyle editingStyle,NSIndexPath indexPath)
-		{
-			switch (editingStyle) {
-			case UITableViewCellEditingStyle.Delete:
-				Console.WriteLine ("CommitEditingStyle:Delete called");
-
-
-				ISippService _service = new SippServiceFake ();
-				var okCancelAlertController = UIAlertController.Create("Alert", "Are you sure you want to delete sipp.", UIAlertControllerStyle.Alert);
-
-				okCancelAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, Handle => {
-						var sipps = _service.DeleteSippAsync (ListSipp [indexPath.Row].Id);
-						if (sipps.IsCompleted) {
-							BTProgressHUD.Show ("Deleting Sipp...");
-							ServiceResult<SippModel> result = sipps.Result;
-							if(result.IsSuccess)
-							{
-								BTProgressHUD.Dismiss ();
-								Console.WriteLine ("Message {0}",result.Message);
-								var okAlertController = UIAlertController.Create ("Success", "Sipp deleted successfully", UIAlertControllerStyle.Alert);
-
-								okAlertController.AddAction (UIAlertAction.Create ("OK", UIAlertActionStyle.Default, Handle1 =>{
-									homeVC.ViewWillAppear(true);
-									tableView.ReloadData();
-
-								}));
-								homeVC.PresentViewController (okAlertController, true, null);
-							}
-							
-
-						} else {
-							//BTProgressHUD.Dismiss ();
-							var okAlertController = UIAlertController.Create ("Error", "Some error !", UIAlertControllerStyle.Alert);
-							okAlertController.AddAction (UIAlertAction.Create ("OK", UIAlertActionStyle.Default,Handle2 =>{
-								//this.NavigationController.PopViewController(true);
-							}));
-							homeVC.PresentViewController (okAlertController, true, null);
-						}
-
-				}));
-				okCancelAlertController.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, Handle => {
-					
-				}));
-				homeVC.PresentViewController(okCancelAlertController, true, null);
-
-
-				// remove the item from the underlying data source
-				//tableItems.RemoveAt(indexPath.Row);
-				// delete the row from the table
-				//tableView.DeleteRows (new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
-				break;
-			case UITableViewCellEditingStyle.None:
-				Console.WriteLine ("CommitEditingStyle:None called");
-				break;
-			}
-		}
-		public override bool CanEditRow (UITableView tableView, NSIndexPath indexPath)
-		{
-			return true; // return false if you wish to disable editing for a specific indexPath or for all rows
-		}
+//		public override void CommitEditingStyle (UITableView tableView, UITableViewCellEditingStyle editingStyle,NSIndexPath indexPath)
+//		{
+//			switch (editingStyle) {
+//			case UITableViewCellEditingStyle.Delete:
+//				Console.WriteLine ("CommitEditingStyle:Delete called");
+//
+//
+//				ISippService _service = new SippServiceFake ();
+//				var okCancelAlertController = UIAlertController.Create("Alert", "Are you sure you want to delete sipp.", UIAlertControllerStyle.Alert);
+//
+//				okCancelAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, Handle => {
+//						var sipps = _service.DeleteSippAsync (ListSipp [indexPath.Row].Id);
+//						if (sipps.IsCompleted) {
+//							BTProgressHUD.Show ("Deleting Sipp...");
+//							ServiceResult<SippModel> result = sipps.Result;
+//							if(result.IsSuccess)
+//							{
+//								BTProgressHUD.Dismiss ();
+//								Console.WriteLine ("Message {0}",result.Message);
+//								var okAlertController = UIAlertController.Create ("Success", "Sipp deleted successfully", UIAlertControllerStyle.Alert);
+//
+//								okAlertController.AddAction (UIAlertAction.Create ("OK", UIAlertActionStyle.Default, Handle1 =>{
+//									homeVC.ViewWillAppear(true);
+//									tableView.ReloadData();
+//
+//								}));
+//								homeVC.PresentViewController (okAlertController, true, null);
+//							}
+//							
+//
+//						} else {
+//							//BTProgressHUD.Dismiss ();
+//							var okAlertController = UIAlertController.Create ("Error", "Some error !", UIAlertControllerStyle.Alert);
+//							okAlertController.AddAction (UIAlertAction.Create ("OK", UIAlertActionStyle.Default,Handle2 =>{
+//								//this.NavigationController.PopViewController(true);
+//							}));
+//							homeVC.PresentViewController (okAlertController, true, null);
+//						}
+//
+//				}));
+//				okCancelAlertController.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, Handle => {
+//					
+//				}));
+//				homeVC.PresentViewController(okCancelAlertController, true, null);
+//
+//
+//				 remove the item from the underlying data source
+//				tableItems.RemoveAt(indexPath.Row);
+//				 delete the row from the table
+//				tableView.DeleteRows (new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
+//				break;
+//			case UITableViewCellEditingStyle.None:
+//				Console.WriteLine ("CommitEditingStyle:None called");
+//				break;
+//			}
+//		}
+//		public override bool CanEditRow (UITableView tableView, NSIndexPath indexPath)
+//		{
+//			return true; // return false if you wish to disable editing for a specific indexPath or for all rows
+//		}
 
 //		public void showDetails(object sender, EventArgs e)
 //		{

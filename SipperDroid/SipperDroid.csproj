@@ -35,10 +35,12 @@
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <ConsolePause>false</ConsolePause>
-    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
+    <DebugSymbols>true</DebugSymbols>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidSupportedAbis>x86</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -49,12 +51,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net" />
     <Reference Include="System.Json" />
-    <Reference Include="Sipper.Core">
-      <HintPath>..\..\..\..\Downloads\Sipper-PCL\Sipper.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Sipper.Service">
-      <HintPath>..\..\..\..\Downloads\Sipper-PCL\Sipper.Service.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Android.Support.v4">
       <HintPath>..\SipperiOS\packages\Xamarin.Android.Support.v4.22.2.0.0\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
@@ -69,6 +65,21 @@
     </Reference>
     <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
       <HintPath>..\SipperiOS\packages\Xamarin.Android.Support.v7.MediaRouter.22.2.0.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\SipperiOS\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\SipperiOS\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sipper.Service.Portable">
+      <HintPath>..\SipperiOS\packages\Sipper.Service.Portable.1.0.5654.24589\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Service.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Sipper.Core">
+      <HintPath>..\SipperiOS\packages\Sipper.Service.Portable.1.0.5654.24589\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sipper.Service.Core">
+      <HintPath>..\SipperiOS\packages\Sipper.Service.Portable.1.0.5654.24589\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Service.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -92,11 +103,14 @@
     <Compile Include="Utility.cs" />
     <Compile Include="MapActivity.cs" />
     <Compile Include="Fragment\DetailDialogFragment.cs" />
+    <Compile Include="Setup.cs" />
+    <Compile Include="PreferenceManager1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
+    <None Include="values-v21\styles.xml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -229,6 +243,8 @@
     <AndroidResource Include="Resources\drawable-hdpi\peek_blue.png">
       <DependentUpon>ic_user_location.png</DependentUpon>
     </AndroidResource>
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_comments.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -238,6 +254,7 @@
     <Folder Include="Fonts\" />
     <Folder Include="Assets\fonts\" />
     <Folder Include="Fragment\" />
+    <Folder Include="values-v21\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\Apache License.txt" />
@@ -274,10 +291,4 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
-  <ItemGroup>
-    <ProjectReference Include="..\SipperiOS\SipperPCL\SipperPCL.csproj">
-      <Project>{EE7C91E6-50D8-42A9-83C2-0C950C71774B}</Project>
-      <Name>SipperPCL</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>

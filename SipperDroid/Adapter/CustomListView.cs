@@ -5,9 +5,8 @@ using Android.Widget;
 using Android.Views;
 using Android.Graphics;
 using Android.Content;
-using Sipper.Service.Models.v1;
-using Sipper.Service.Interfaces;
-using Sipper.Service.Fakes;
+using Sipper.Service.Core.Models.v1;
+
 
 namespace SipperDroid
 {

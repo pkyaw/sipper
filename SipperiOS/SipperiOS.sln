@@ -5,10 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SipperiOS", "SipperiOS\Sipp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SipperiOS.UITests", "SipperiOS.UITests\SipperiOS.UITests.csproj", "{119B1C9F-0A5F-4B7D-96DD-6828D3A8E257}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SipperShared", "SipperShared\SipperShared.shproj", "{6B801A24-53E4-4629-BEBE-197C2104D269}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SipperPCL", "SipperPCL\SipperPCL.csproj", "{EE7C91E6-50D8-42A9-83C2-0C950C71774B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SipperDroid", "..\SipperDroid\SipperDroid.csproj", "{AB2DDFB0-A65B-478C-BE3F-8E6294F85195}"
 EndProject
 Global
@@ -57,17 +53,5 @@ Global
 		{AB2DDFB0-A65B-478C-BE3F-8E6294F85195}.Release|iPhone.Build.0 = Release|Any CPU
 		{AB2DDFB0-A65B-478C-BE3F-8E6294F85195}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{AB2DDFB0-A65B-478C-BE3F-8E6294F85195}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{EE7C91E6-50D8-42A9-83C2-0C950C71774B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE7C91E6-50D8-42A9-83C2-0C950C71774B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE7C91E6-50D8-42A9-83C2-0C950C71774B}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{EE7C91E6-50D8-42A9-83C2-0C950C71774B}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{EE7C91E6-50D8-42A9-83C2-0C950C71774B}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{EE7C91E6-50D8-42A9-83C2-0C950C71774B}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{EE7C91E6-50D8-42A9-83C2-0C950C71774B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE7C91E6-50D8-42A9-83C2-0C950C71774B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE7C91E6-50D8-42A9-83C2-0C950C71774B}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{EE7C91E6-50D8-42A9-83C2-0C950C71774B}.Release|iPhone.Build.0 = Release|Any CPU
-		{EE7C91E6-50D8-42A9-83C2-0C950C71774B}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{EE7C91E6-50D8-42A9-83C2-0C950C71774B}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

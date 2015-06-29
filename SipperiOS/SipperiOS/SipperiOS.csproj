@@ -22,8 +22,8 @@
     <MtouchArch>i386</MtouchArch>
     <MtouchDebug>true</MtouchDebug>
     <MtouchProfiling>true</MtouchProfiling>
-    <CodesignKey>iPhone Distribution: RezTech LLC (7GSX52HKQY)</CodesignKey>
-    <CodesignProvision>e1ffdb91-6fe7-4cd5-8d5b-2b4924306d90</CodesignProvision>
+    <CodesignKey>iPhone Developer: Satish Mugala (XR297929LH)</CodesignKey>
+    <CodesignProvision>d0715ed3-ff14-4fce-9c0c-3a32aa11dc30</CodesignProvision>
     <MtouchSdkVersion>8.1</MtouchSdkVersion>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchI18n>
@@ -38,7 +38,12 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: RezTech LLC (7GSX52HKQY)</CodesignKey>
+    <MtouchSdkVersion>8.1</MtouchSdkVersion>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchLink>Full</MtouchLink>
+    <MtouchI18n>
+    </MtouchI18n>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -68,6 +73,7 @@
     <MtouchI18n>
     </MtouchI18n>
     <CodesignProvision>38e8239a-8aa9-490e-b8ee-80fbab59186f</CodesignProvision>
+    <MtouchSdkVersion>8.1</MtouchSdkVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -77,17 +83,26 @@
     <Reference Include="Calabash">
       <HintPath>..\packages\Xamarin.TestCloud.Agent.0.14.1\lib\Xamarin.iOS10\Calabash.dll</HintPath>
     </Reference>
-    <Reference Include="Sipper.Core">
-      <HintPath>..\..\..\..\..\Downloads\Sipper-PCL\Sipper.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Sipper.Service">
-      <HintPath>..\..\..\..\..\Downloads\Sipper-PCL\Sipper.Service.dll</HintPath>
-    </Reference>
     <Reference Include="BTProgressHUD">
       <HintPath>..\Components\btprogresshud-1.16\lib\ios-unified\BTProgressHUD.dll</HintPath>
     </Reference>
     <Reference Include="GoogleMaps">
       <HintPath>..\Components\googlemapsios-1.9.2\lib\ios-unified\GoogleMaps.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sipper.Service.Portable">
+      <HintPath>..\packages\Sipper.Service.Portable.1.0.5654.24589\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Service.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Sipper.Core">
+      <HintPath>..\packages\Sipper.Service.Portable.1.0.5654.24589\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sipper.Service.Core">
+      <HintPath>..\packages\Sipper.Service.Portable.1.0.5654.24589\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Service.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -201,15 +216,13 @@
       <DependentUpon>MapViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="AppData.cs" />
-    <Compile Include="Location\LocationManager.cs" />
-    <Compile Include="Location\LocationUpdateEventArgs.cs" />
+    <Compile Include="Setup.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Folder Include="ViewController\" />
     <Folder Include="Font\" />
     <Folder Include="Cell\" />
-    <Folder Include="Location\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\bg_with_logo.png" />
@@ -301,6 +314,7 @@
     <BundleResource Include="Resources\btn_share%402x.png" />
     <BundleResource Include="Resources\btn_share%403x.png" />
     <BundleResource Include="Resources\ic_alert.png" />
+    <BundleResource Include="Resources\ic_comments.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="btprogresshud">

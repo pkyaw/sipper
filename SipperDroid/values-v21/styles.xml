@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<resources>
+  <!--
+        Base application theme for API 21+. This theme replaces
+        MyTheme from resources/values/styles.xml on API 21+ devices.
+    -->
+   <style name="MyCustomTheme" parent="android:Theme.Material.Light">
+        <!-- Override the app bar color -->
+        <item name="android:statusBarColor">@color/my_purple</item>
+        <!-- Override the color of UI controls -->
+        <item name="android:colorAccent">@color/my_purple</item>
+    </style>
+</resources>

@@ -4,17 +4,17 @@ using System.Collections.Generic;
 using Android.Widget;
 using Android.Views;
 using Android.Graphics;
-using Sipper.Service.Models.v1;
+using Sipper.Service.Core.Models.v1;
 
 namespace SipperDroid
 {
-	public class CustomListViewDetail: BaseAdapter<SippModel>
+	public class CustomListViewDetail: BaseAdapter<SippReplyModel>
 	{
 		Activity context;
-		List<SippModel> list;
+		List<SippReplyModel> list;
 
 
-		public CustomListViewDetail (Activity _context, List<SippModel> _list)
+		public CustomListViewDetail (Activity _context, List<SippReplyModel> _list)
 			: base ()
 		{
 			this.context = _context;
@@ -30,7 +30,7 @@ namespace SipperDroid
 			return position;
 		}
 
-		public override SippModel this [int index] {
+		public override SippReplyModel this [int index] {
 			get { return list [index]; }
 		}
 
@@ -40,7 +40,7 @@ namespace SipperDroid
 			Typeface tf = Typeface.CreateFromAsset (Application.Context.Assets, "fonts/OpenSans-Regular.ttf");
 			Typeface tf1 = Typeface.CreateFromAsset (Application.Context.Assets, "fonts/OpenSans-Semibold.ttf");
 
-			SippModel item = this [position];
+			SippReplyModel item = this [position];
 			if (convertView == null) {
 				convertView = context.LayoutInflater.Inflate (Resource.Layout.dashboard_listview_detail_Adapter, parent, false);
 				holder = new Viewholder ();

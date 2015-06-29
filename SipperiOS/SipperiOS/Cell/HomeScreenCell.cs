@@ -107,13 +107,13 @@ namespace SipperiOS
 
 		}
 
-		public void UpdateCell (string detail, string createdUtc, string replies ,int number, string handle)
+		public void UpdateCell (string detail, DateTime createdUtc, string replies ,int number, string handle)
 		{
 
 			//imageView.Image = image;
 			lb_Detail.Text = detail;
 
-			TimeSpan span = (Convert.ToDateTime(createdUtc) - DateTime.Now);
+			TimeSpan span = (DateTime.Now - createdUtc);
 
 			String.Format("{0} days, {1} hours, {2} minutes, {3} seconds", 
 				span.Days, span.Hours, span.Minutes, span.Seconds);

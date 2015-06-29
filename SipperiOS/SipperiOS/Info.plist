@@ -11,7 +11,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
-	<string>7.0</string>
+	<string>7.1</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -53,8 +53,6 @@
 	</dict>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackTranslucent</string>
-	<key>CFBundleIdentifier</key>
-	<string>Expresso</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
@@ -63,5 +61,7 @@
 	<string>Sipper uses your location to show you quality stream of yaks in your area.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Sipper uses your location to show you quality stream of yaks in your area.</string>
+	<key>CFBundleIdentifier</key>
+	<string>Expresso</string>
 </dict>
 </plist>

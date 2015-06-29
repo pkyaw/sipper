@@ -3057,175 +3057,178 @@ namespace SipperDroid
 			public const int ic_cast_on_light = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int ic_dot_lightpink = 2130837628;
+			public const int ic_comments = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int ic_media_pause = 2130837629;
+			public const int ic_dot_lightpink = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int ic_media_play = 2130837630;
+			public const int ic_media_pause = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int ic_media_route_disabled_mono_dark = 2130837631;
+			public const int ic_media_play = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int ic_media_route_off_mono_dark = 2130837632;
+			public const int ic_media_route_disabled_mono_dark = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int ic_media_route_on_0_mono_dark = 2130837633;
+			public const int ic_media_route_off_mono_dark = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int ic_media_route_on_1_mono_dark = 2130837634;
+			public const int ic_media_route_on_0_mono_dark = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int ic_media_route_on_2_mono_dark = 2130837635;
+			public const int ic_media_route_on_1_mono_dark = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int ic_media_route_on_mono_dark = 2130837636;
+			public const int ic_media_route_on_2_mono_dark = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int ic_menu = 2130837637;
+			public const int ic_media_route_on_mono_dark = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int ic_mushroom_violet = 2130837638;
+			public const int ic_menu = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int ic_op_blue = 2130837639;
+			public const int ic_mushroom_violet = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int ic_pause_dark = 2130837640;
+			public const int ic_op_blue = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int ic_pause_light = 2130837641;
+			public const int ic_pause_dark = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int ic_peek_orange = 2130837642;
+			public const int ic_pause_light = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int ic_peek_violet = 2130837643;
+			public const int ic_peek_orange = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int ic_play_dark = 2130837644;
+			public const int ic_peek_violet = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int ic_play_light = 2130837645;
+			public const int ic_play_dark = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int ic_plusone_medium_off_client = 2130837646;
+			public const int ic_play_light = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int ic_plusone_small_off_client = 2130837647;
+			public const int ic_plusone_medium_off_client = 2130837647;
 			
 			// aapt resource value: 0x7f020090
-			public const int ic_plusone_standard_off_client = 2130837648;
+			public const int ic_plusone_small_off_client = 2130837648;
 			
 			// aapt resource value: 0x7f020091
-			public const int ic_plusone_tall_off_client = 2130837649;
+			public const int ic_plusone_standard_off_client = 2130837649;
 			
 			// aapt resource value: 0x7f020092
-			public const int ic_reload_thin = 2130837650;
+			public const int ic_plusone_tall_off_client = 2130837650;
 			
 			// aapt resource value: 0x7f020093
-			public const int ic_right_arrow_thin = 2130837651;
+			public const int ic_reload_thin = 2130837651;
 			
 			// aapt resource value: 0x7f020094
-			public const int ic_search_gray = 2130837652;
+			public const int ic_right_arrow_thin = 2130837652;
 			
 			// aapt resource value: 0x7f020095
-			public const int ic_setting_dark = 2130837653;
+			public const int ic_search_gray = 2130837653;
 			
 			// aapt resource value: 0x7f020096
-			public const int ic_setting_light = 2130837654;
+			public const int ic_setting_dark = 2130837654;
 			
 			// aapt resource value: 0x7f020097
-			public const int ic_share_thin = 2130837655;
+			public const int ic_setting_light = 2130837655;
 			
 			// aapt resource value: 0x7f020098
-			public const int ic_user = 2130837656;
+			public const int ic_share_thin = 2130837656;
 			
 			// aapt resource value: 0x7f020099
-			public const int ic_user_location = 2130837657;
+			public const int ic_user = 2130837657;
 			
 			// aapt resource value: 0x7f02009a
-			public const int Icon = 2130837658;
+			public const int ic_user_location = 2130837658;
 			
 			// aapt resource value: 0x7f02009b
-			public const int Icon_iOS_512 = 2130837659;
+			public const int Icon = 2130837659;
 			
 			// aapt resource value: 0x7f02009c
-			public const int list_item_select = 2130837660;
+			public const int Icon_iOS_512 = 2130837660;
 			
 			// aapt resource value: 0x7f02009d
-			public const int me = 2130837661;
+			public const int list_item_select = 2130837661;
 			
 			// aapt resource value: 0x7f02009e
-			public const int me_blue = 2130837662;
+			public const int me = 2130837662;
 			
 			// aapt resource value: 0x7f02009f
-			public const int me_selector = 2130837663;
+			public const int me_blue = 2130837663;
 			
 			// aapt resource value: 0x7f0200a0
-			public const int more = 2130837664;
+			public const int me_selector = 2130837664;
 			
 			// aapt resource value: 0x7f0200a1
-			public const int more_blue = 2130837665;
+			public const int more = 2130837665;
 			
 			// aapt resource value: 0x7f0200a2
-			public const int more_selector = 2130837666;
+			public const int more_blue = 2130837666;
 			
 			// aapt resource value: 0x7f0200a3
-			public const int mr_ic_audio_vol = 2130837667;
+			public const int more_selector = 2130837667;
 			
 			// aapt resource value: 0x7f0200a4
-			public const int mr_ic_media_route_connecting_mono_dark = 2130837668;
+			public const int mr_ic_audio_vol = 2130837668;
 			
 			// aapt resource value: 0x7f0200a5
-			public const int mr_ic_media_route_connecting_mono_light = 2130837669;
+			public const int mr_ic_media_route_connecting_mono_dark = 2130837669;
 			
 			// aapt resource value: 0x7f0200a6
-			public const int mr_ic_media_route_mono_dark = 2130837670;
+			public const int mr_ic_media_route_connecting_mono_light = 2130837670;
 			
 			// aapt resource value: 0x7f0200a7
-			public const int mr_ic_media_route_mono_light = 2130837671;
+			public const int mr_ic_media_route_mono_dark = 2130837671;
 			
 			// aapt resource value: 0x7f0200a8
-			public const int mr_ic_pause_dark = 2130837672;
+			public const int mr_ic_media_route_mono_light = 2130837672;
 			
 			// aapt resource value: 0x7f0200a9
-			public const int mr_ic_pause_light = 2130837673;
+			public const int mr_ic_pause_dark = 2130837673;
 			
 			// aapt resource value: 0x7f0200aa
-			public const int mr_ic_play_dark = 2130837674;
+			public const int mr_ic_pause_light = 2130837674;
 			
 			// aapt resource value: 0x7f0200ab
-			public const int mr_ic_play_light = 2130837675;
+			public const int mr_ic_play_dark = 2130837675;
 			
 			// aapt resource value: 0x7f0200ac
-			public const int mr_ic_settings_dark = 2130837676;
+			public const int mr_ic_play_light = 2130837676;
 			
 			// aapt resource value: 0x7f0200ad
-			public const int mr_ic_settings_light = 2130837677;
-			
-			// aapt resource value: 0x7f0200b4
-			public const int notification_template_icon_bg = 2130837684;
+			public const int mr_ic_settings_dark = 2130837677;
 			
 			// aapt resource value: 0x7f0200ae
-			public const int peek = 2130837678;
+			public const int mr_ic_settings_light = 2130837678;
+			
+			// aapt resource value: 0x7f0200b5
+			public const int notification_template_icon_bg = 2130837685;
 			
 			// aapt resource value: 0x7f0200af
-			public const int peek_blue = 2130837679;
+			public const int peek = 2130837679;
 			
 			// aapt resource value: 0x7f0200b0
-			public const int peek_selector = 2130837680;
+			public const int peek_blue = 2130837680;
 			
 			// aapt resource value: 0x7f0200b1
-			public const int powered_by_google_dark = 2130837681;
+			public const int peek_selector = 2130837681;
 			
 			// aapt resource value: 0x7f0200b2
-			public const int powered_by_google_light = 2130837682;
+			public const int powered_by_google_dark = 2130837682;
 			
 			// aapt resource value: 0x7f0200b3
-			public const int psts_background_tab = 2130837683;
+			public const int powered_by_google_light = 2130837683;
+			
+			// aapt resource value: 0x7f0200b4
+			public const int psts_background_tab = 2130837684;
 			
 			static Drawable()
 			{
@@ -3246,20 +3249,20 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c0076
 			public const int Image1 = 2131492982;
 			
+			// aapt resource value: 0x7f0c0081
+			public const int ImageDown = 2131492993;
+			
 			// aapt resource value: 0x7f0c0080
-			public const int ImageDown = 2131492992;
+			public const int ImageUp = 2131492992;
 			
-			// aapt resource value: 0x7f0c007f
-			public const int ImageUp = 2131492991;
-			
-			// aapt resource value: 0x7f0c0079
-			public const int Text1 = 2131492985;
+			// aapt resource value: 0x7f0c007a
+			public const int Text1 = 2131492986;
 			
 			// aapt resource value: 0x7f0c0075
 			public const int Text2 = 2131492981;
 			
-			// aapt resource value: 0x7f0c00a0
-			public const int action0 = 2131493024;
+			// aapt resource value: 0x7f0c00a1
+			public const int action0 = 2131493025;
 			
 			// aapt resource value: 0x7f0c0056
 			public const int action_bar = 2131492950;
@@ -3285,8 +3288,8 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c0057
 			public const int action_context_bar = 2131492951;
 			
-			// aapt resource value: 0x7f0c00a4
-			public const int action_divider = 2131493028;
+			// aapt resource value: 0x7f0c00a5
+			public const int action_divider = 2131493029;
 			
 			// aapt resource value: 0x7f0c0002
 			public const int action_menu_divider = 2131492866;
@@ -3318,8 +3321,8 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c002b
 			public const int always = 2131492907;
 			
-			// aapt resource value: 0x7f0c0096
-			public const int art = 2131493014;
+			// aapt resource value: 0x7f0c0097
+			public const int art = 2131493015;
 			
 			// aapt resource value: 0x7f0c0028
 			public const int beginning = 2131492904;
@@ -3333,8 +3336,8 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c004c
 			public const int buttonPanel = 2131492940;
 			
-			// aapt resource value: 0x7f0c009c
-			public const int buttons = 2131493020;
+			// aapt resource value: 0x7f0c009d
+			public const int buttons = 2131493021;
 			
 			// aapt resource value: 0x7f0c0015
 			public const int buyButton = 2131492885;
@@ -3345,14 +3348,14 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c001b
 			public const int buy_with_google = 2131492891;
 			
-			// aapt resource value: 0x7f0c00a1
-			public const int cancel_action = 2131493025;
+			// aapt resource value: 0x7f0c00a2
+			public const int cancel_action = 2131493026;
 			
 			// aapt resource value: 0x7f0c004e
 			public const int checkbox = 2131492942;
 			
-			// aapt resource value: 0x7f0c00a7
-			public const int chronometer = 2131493031;
+			// aapt resource value: 0x7f0c00a8
+			public const int chronometer = 2131493032;
 			
 			// aapt resource value: 0x7f0c001d
 			public const int classic = 2131492893;
@@ -3375,8 +3378,8 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c003f
 			public const int default_activity_button = 2131492927;
 			
-			// aapt resource value: 0x7f0c0095
-			public const int default_control_frame = 2131493013;
+			// aapt resource value: 0x7f0c0096
+			public const int default_control_frame = 2131493014;
 			
 			// aapt resource value: 0x7f0c0030
 			public const int dialog = 2131492912;
@@ -3384,8 +3387,8 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c0022
 			public const int disableHome = 2131492898;
 			
-			// aapt resource value: 0x7f0c009d
-			public const int disconnect = 2131493021;
+			// aapt resource value: 0x7f0c009e
+			public const int disconnect = 2131493022;
 			
 			// aapt resource value: 0x7f0c001c
 			public const int donate_with_google = 2131492892;
@@ -3399,8 +3402,8 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c0029
 			public const int end = 2131492905;
 			
-			// aapt resource value: 0x7f0c00ac
-			public const int end_padder = 2131493036;
+			// aapt resource value: 0x7f0c00ad
+			public const int end_padder = 2131493037;
 			
 			// aapt resource value: 0x7f0c003d
 			public const int expand_activities_button = 2131492925;
@@ -3435,26 +3438,29 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c003e
 			public const int image = 2131492926;
 			
-			// aapt resource value: 0x7f0c00af
-			public const int img1 = 2131493039;
+			// aapt resource value: 0x7f0c00b0
+			public const int img1 = 2131493040;
 			
-			// aapt resource value: 0x7f0c00b1
-			public const int img2 = 2131493041;
+			// aapt resource value: 0x7f0c00b2
+			public const int img2 = 2131493042;
 			
-			// aapt resource value: 0x7f0c00b3
-			public const int img3 = 2131493043;
+			// aapt resource value: 0x7f0c00b4
+			public const int img3 = 2131493044;
 			
-			// aapt resource value: 0x7f0c00b5
-			public const int img4 = 2131493045;
+			// aapt resource value: 0x7f0c00b6
+			public const int img4 = 2131493046;
 			
-			// aapt resource value: 0x7f0c00b7
-			public const int img5 = 2131493047;
+			// aapt resource value: 0x7f0c00b8
+			public const int img5 = 2131493048;
 			
-			// aapt resource value: 0x7f0c00ab
-			public const int info = 2131493035;
+			// aapt resource value: 0x7f0c00ac
+			public const int info = 2131493036;
 			
 			// aapt resource value: 0x7f0c0038
 			public const int italic = 2131492920;
+			
+			// aapt resource value: 0x7f0c0078
+			public const int ivEmptylist = 2131492984;
 			
 			// aapt resource value: 0x7f0c0066
 			public const int ivImage = 2131492966;
@@ -3462,20 +3468,20 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c006e
 			public const int ivNew1 = 2131492974;
 			
-			// aapt resource value: 0x7f0c00c1
-			public const int ivUser = 2131493057;
+			// aapt resource value: 0x7f0c00c2
+			public const int ivUser = 2131493058;
 			
-			// aapt resource value: 0x7f0c0078
-			public const int ivimage = 2131492984;
+			// aapt resource value: 0x7f0c0079
+			public const int ivimage = 2131492985;
 			
 			// aapt resource value: 0x7f0c006a
 			public const int ivsendsipper = 2131492970;
 			
-			// aapt resource value: 0x7f0c00a5
-			public const int line1 = 2131493029;
+			// aapt resource value: 0x7f0c00a6
+			public const int line1 = 2131493030;
 			
-			// aapt resource value: 0x7f0c00a9
-			public const int line3 = 2131493033;
+			// aapt resource value: 0x7f0c00aa
+			public const int line3 = 2131493034;
 			
 			// aapt resource value: 0x7f0c0020
 			public const int listMode = 2131492896;
@@ -3498,20 +3504,20 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c0017
 			public const int match_parent = 2131492887;
 			
-			// aapt resource value: 0x7f0c00a3
-			public const int media_actions = 2131493027;
+			// aapt resource value: 0x7f0c00a4
+			public const int media_actions = 2131493028;
 			
-			// aapt resource value: 0x7f0c0094
-			public const int media_route_control_frame = 2131493012;
+			// aapt resource value: 0x7f0c0095
+			public const int media_route_control_frame = 2131493013;
 			
-			// aapt resource value: 0x7f0c0090
-			public const int media_route_list = 2131493008;
-			
-			// aapt resource value: 0x7f0c009a
-			public const int media_route_volume_layout = 2131493018;
+			// aapt resource value: 0x7f0c0091
+			public const int media_route_list = 2131493009;
 			
 			// aapt resource value: 0x7f0c009b
-			public const int media_route_volume_slider = 2131493019;
+			public const int media_route_volume_layout = 2131493019;
+			
+			// aapt resource value: 0x7f0c009c
+			public const int media_route_volume_slider = 2131493020;
 			
 			// aapt resource value: 0x7f0c002a
 			public const int middle = 2131492906;
@@ -3531,14 +3537,14 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c000d
 			public const int normal = 2131492877;
 			
-			// aapt resource value: 0x7f0c0083
-			public const int pager = 2131492995;
+			// aapt resource value: 0x7f0c0084
+			public const int pager = 2131492996;
 			
 			// aapt resource value: 0x7f0c0043
 			public const int parentPanel = 2131492931;
 			
-			// aapt resource value: 0x7f0c0097
-			public const int play_pause = 2131493015;
+			// aapt resource value: 0x7f0c0098
+			public const int play_pause = 2131493016;
 			
 			// aapt resource value: 0x7f0c0012
 			public const int production = 2131492882;
@@ -3549,8 +3555,8 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c0006
 			public const int progress_horizontal = 2131492870;
 			
-			// aapt resource value: 0x7f0c00be
-			public const int psts_tab_title = 2131493054;
+			// aapt resource value: 0x7f0c00bf
+			public const int psts_tab_title = 2131493055;
 			
 			// aapt resource value: 0x7f0c0050
 			public const int radio = 2131492944;
@@ -3558,8 +3564,8 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c006b
 			public const int refresher = 2131492971;
 			
-			// aapt resource value: 0x7f0c0092
-			public const int route_name = 2131493010;
+			// aapt resource value: 0x7f0c0093
+			public const int route_name = 2131493011;
 			
 			// aapt resource value: 0x7f0c0013
 			public const int sandbox = 2131492883;
@@ -3609,8 +3615,8 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c0016
 			public const int selectionDetails = 2131492886;
 			
-			// aapt resource value: 0x7f0c0093
-			public const int settings = 2131493011;
+			// aapt resource value: 0x7f0c0094
+			public const int settings = 2131493012;
 			
 			// aapt resource value: 0x7f0c004f
 			public const int shortcut = 2131492943;
@@ -3636,11 +3642,11 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c0036
 			public const int src_over = 2131492918;
 			
-			// aapt resource value: 0x7f0c00a2
-			public const int status_bar_latest_event_content = 2131493026;
+			// aapt resource value: 0x7f0c00a3
+			public const int status_bar_latest_event_content = 2131493027;
 			
-			// aapt resource value: 0x7f0c009e
-			public const int stop = 2131493022;
+			// aapt resource value: 0x7f0c009f
+			public const int stop = 2131493023;
 			
 			// aapt resource value: 0x7f0c0014
 			public const int strict_sandbox = 2131492884;
@@ -3648,14 +3654,14 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c0061
 			public const int submit_area = 2131492961;
 			
-			// aapt resource value: 0x7f0c0099
-			public const int subtitle = 2131493017;
+			// aapt resource value: 0x7f0c009a
+			public const int subtitle = 2131493018;
+			
+			// aapt resource value: 0x7f0c007e
+			public const int tabIcon = 2131492990;
 			
 			// aapt resource value: 0x7f0c007d
-			public const int tabIcon = 2131492989;
-			
-			// aapt resource value: 0x7f0c007c
-			public const int tabLayout = 2131492988;
+			public const int tabLayout = 2131492989;
 			
 			// aapt resource value: 0x7f0c0021
 			public const int tabMode = 2131492897;
@@ -3663,26 +3669,26 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c000f
 			public const int terrain = 2131492879;
 			
-			// aapt resource value: 0x7f0c00aa
-			public const int text = 2131493034;
+			// aapt resource value: 0x7f0c00ab
+			public const int text = 2131493035;
 			
-			// aapt resource value: 0x7f0c00a8
-			public const int text2 = 2131493032;
+			// aapt resource value: 0x7f0c00a9
+			public const int text2 = 2131493033;
 			
 			// aapt resource value: 0x7f0c0049
 			public const int textSpacerNoButtons = 2131492937;
 			
-			// aapt resource value: 0x7f0c0098
-			public const int text_wrapper = 2131493016;
+			// aapt resource value: 0x7f0c0099
+			public const int text_wrapper = 2131493017;
 			
-			// aapt resource value: 0x7f0c00a6
-			public const int time = 2131493030;
+			// aapt resource value: 0x7f0c00a7
+			public const int time = 2131493031;
 			
 			// aapt resource value: 0x7f0c0042
 			public const int title = 2131492930;
 			
-			// aapt resource value: 0x7f0c0091
-			public const int title_bar = 2131493009;
+			// aapt resource value: 0x7f0c0092
+			public const int title_bar = 2131493010;
 			
 			// aapt resource value: 0x7f0c0045
 			public const int title_template = 2131492933;
@@ -3690,44 +3696,44 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c0044
 			public const int topPanel = 2131492932;
 			
-			// aapt resource value: 0x7f0c007a
-			public const int tvCancel = 2131492986;
-			
-			// aapt resource value: 0x7f0c00bc
-			public const int tvCollege = 2131493052;
+			// aapt resource value: 0x7f0c007b
+			public const int tvCancel = 2131492987;
 			
 			// aapt resource value: 0x7f0c00bd
-			public const int tvCollege2 = 2131493053;
+			public const int tvCollege = 2131493053;
 			
-			// aapt resource value: 0x7f0c0082
-			public const int tvContinue = 2131492994;
+			// aapt resource value: 0x7f0c00be
+			public const int tvCollege2 = 2131493054;
+			
+			// aapt resource value: 0x7f0c0083
+			public const int tvContinue = 2131492995;
 			
 			// aapt resource value: 0x7f0c0067
 			public const int tvCount = 2131492967;
 			
-			// aapt resource value: 0x7f0c0081
-			public const int tvDescription = 2131492993;
+			// aapt resource value: 0x7f0c0082
+			public const int tvDescription = 2131492994;
 			
-			// aapt resource value: 0x7f0c008c
-			public const int tvFacebook = 2131493004;
+			// aapt resource value: 0x7f0c008d
+			public const int tvFacebook = 2131493005;
 			
-			// aapt resource value: 0x7f0c008e
-			public const int tvFind = 2131493006;
+			// aapt resource value: 0x7f0c008f
+			public const int tvFind = 2131493007;
 			
-			// aapt resource value: 0x7f0c007e
-			public const int tvHandle = 2131492990;
+			// aapt resource value: 0x7f0c007f
+			public const int tvHandle = 2131492991;
 			
 			// aapt resource value: 0x7f0c0069
 			public const int tvHot = 2131492969;
 			
-			// aapt resource value: 0x7f0c008f
-			public const int tvImportant = 2131493007;
+			// aapt resource value: 0x7f0c0090
+			public const int tvImportant = 2131493008;
 			
-			// aapt resource value: 0x7f0c0084
-			public const int tvMore = 2131492996;
+			// aapt resource value: 0x7f0c0085
+			public const int tvMore = 2131492997;
 			
-			// aapt resource value: 0x7f0c00b9
-			public const int tvMyPeek = 2131493049;
+			// aapt resource value: 0x7f0c00ba
+			public const int tvMyPeek = 2131493050;
 			
 			// aapt resource value: 0x7f0c0068
 			public const int tvNew = 2131492968;
@@ -3735,29 +3741,29 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c006d
 			public const int tvNumber = 2131492973;
 			
-			// aapt resource value: 0x7f0c0087
-			public const int tvOhteryak = 2131492999;
+			// aapt resource value: 0x7f0c0088
+			public const int tvOhteryak = 2131493000;
 			
-			// aapt resource value: 0x7f0c00ad
-			public const int tvPeek = 2131493037;
+			// aapt resource value: 0x7f0c00ae
+			public const int tvPeek = 2131493038;
 			
-			// aapt resource value: 0x7f0c00bb
-			public const int tvPeekNear = 2131493051;
+			// aapt resource value: 0x7f0c00bc
+			public const int tvPeekNear = 2131493052;
 			
-			// aapt resource value: 0x7f0c008a
-			public const int tvRateYak = 2131493002;
+			// aapt resource value: 0x7f0c008b
+			public const int tvRateYak = 2131493003;
 			
 			// aapt resource value: 0x7f0c0073
 			public const int tvReply = 2131492979;
 			
-			// aapt resource value: 0x7f0c00bf
-			public const int tvSend = 2131493055;
+			// aapt resource value: 0x7f0c00c0
+			public const int tvSend = 2131493056;
 			
-			// aapt resource value: 0x7f0c0089
-			public const int tvShareYak = 2131493001;
+			// aapt resource value: 0x7f0c008a
+			public const int tvShareYak = 2131493002;
 			
-			// aapt resource value: 0x7f0c009f
-			public const int tvText = 2131493023;
+			// aapt resource value: 0x7f0c00a0
+			public const int tvText = 2131493024;
 			
 			// aapt resource value: 0x7f0c0072
 			public const int tvTime = 2131492978;
@@ -3765,50 +3771,50 @@ namespace SipperDroid
 			// aapt resource value: 0x7f0c0065
 			public const int tvTitle = 2131492965;
 			
-			// aapt resource value: 0x7f0c008b
-			public const int tvTwitter = 2131493003;
+			// aapt resource value: 0x7f0c008c
+			public const int tvTwitter = 2131493004;
 			
-			// aapt resource value: 0x7f0c007b
-			public const int tvYesFlag = 2131492987;
+			// aapt resource value: 0x7f0c007c
+			public const int tvYesFlag = 2131492988;
 			
-			// aapt resource value: 0x7f0c00c0
-			public const int tvdata = 2131493056;
+			// aapt resource value: 0x7f0c00c1
+			public const int tvdata = 2131493057;
 			
 			// aapt resource value: 0x7f0c0071
 			public const int tvdesc = 2131492977;
 			
-			// aapt resource value: 0x7f0c00ae
-			public const int tvfeature = 2131493038;
+			// aapt resource value: 0x7f0c00af
+			public const int tvfeature = 2131493039;
 			
-			// aapt resource value: 0x7f0c00b8
-			public const int tvhair = 2131493048;
+			// aapt resource value: 0x7f0c00b9
+			public const int tvhair = 2131493049;
 			
-			// aapt resource value: 0x7f0c008d
-			public const int tvinstagram = 2131493005;
+			// aapt resource value: 0x7f0c008e
+			public const int tvinstagram = 2131493006;
 			
-			// aapt resource value: 0x7f0c00b6
-			public const int tvletter = 2131493046;
+			// aapt resource value: 0x7f0c00b7
+			public const int tvletter = 2131493047;
 			
-			// aapt resource value: 0x7f0c00ba
-			public const int tvlocation = 2131493050;
+			// aapt resource value: 0x7f0c00bb
+			public const int tvlocation = 2131493051;
 			
-			// aapt resource value: 0x7f0c00b0
-			public const int tvlove = 2131493040;
+			// aapt resource value: 0x7f0c00b1
+			public const int tvlove = 2131493041;
 			
-			// aapt resource value: 0x7f0c0088
-			public const int tvloveyak = 2131493000;
+			// aapt resource value: 0x7f0c0089
+			public const int tvloveyak = 2131493001;
 			
-			// aapt resource value: 0x7f0c00b4
-			public const int tvmonday = 2131493044;
+			// aapt resource value: 0x7f0c00b5
+			public const int tvmonday = 2131493045;
 			
-			// aapt resource value: 0x7f0c00b2
-			public const int tvpool = 2131493042;
-			
-			// aapt resource value: 0x7f0c0085
-			public const int tvtopyak = 2131492997;
+			// aapt resource value: 0x7f0c00b3
+			public const int tvpool = 2131493043;
 			
 			// aapt resource value: 0x7f0c0086
-			public const int tvtopyakArea = 2131492998;
+			public const int tvtopyak = 2131492998;
+			
+			// aapt resource value: 0x7f0c0087
+			public const int tvtopyakArea = 2131492999;
 			
 			// aapt resource value: 0x7f0c0008
 			public const int up = 2131492872;
@@ -4687,6 +4693,12 @@ namespace SipperDroid
 			
 			// aapt resource value: 0x7f080079
 			public const int Base_Widget_AppCompat_Toolbar_Button_Navigation = 2131230841;
+			
+			// aapt resource value: 0x7f08012d
+			public const int MyTheme = 2131231021;
+			
+			// aapt resource value: 0x7f08012e
+			public const int MyTheme_Base = 2131231022;
 			
 			// aapt resource value: 0x7f080019
 			public const int Platform_AppCompat = 2131230745;

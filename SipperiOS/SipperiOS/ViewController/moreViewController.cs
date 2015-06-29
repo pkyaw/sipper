@@ -4,10 +4,19 @@ using System;
 using Foundation;
 using UIKit;
 using System.Collections.Generic;
+using BigTed;
+using Autofac;
+using Sipper.Service.Core.Interfaces.v1;
+using Sipper.Service.Core.Models.v1;
+using Newtonsoft.Json;
+
+
 namespace SipperiOS
 {
 	public partial class moreViewController : UIViewController
 	{
+
+		List<ExtraModel> ListExtraModel;
 		public moreViewController () : base ("moreViewController", null)
 		{
 		}
@@ -19,7 +28,11 @@ namespace SipperiOS
 			
 			// Release any cached data, images, etc that aren't in use.
 		}
-
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+			getExtras ();
+		}
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -43,6 +56,35 @@ namespace SipperiOS
 			tableView.SeparatorInset =  new UIEdgeInsets(0,40,0,40);
 			tableView.Source = new MoreTableSource (items,this,this.tableView);
 			tableView.ReloadData ();
+		}
+		public async void getExtras()
+		{
+
+			BTProgressHUD.Show("Getting More...",-1,ProgressHUD.MaskType.Gradient);
+			try
+			{
+				var container = Setup.RegisterContainerBuilder ();
+
+				using (var scope = container.BeginLifetimeScope())
+				{
+					var sippService = scope.Resolve<IExtraService>();
+					ListExtraModel = await sippService.GetExtrasAsync(skip:0,take:20);
+
+					if (ListExtraModel == null) 
+					{
+						System.Console.WriteLine("Error");
+					}
+					else
+					{
+						System.Console.WriteLine("Get More : " + JsonConvert.SerializeObject(ListExtraModel, Formatting.Indented));
+					}
+				}
+				BTProgressHUD.Dismiss ();
+			}
+			catch(Exception e) {
+				Console.WriteLine ("Error : ", e.Message.ToString ());
+				BTProgressHUD.Dismiss ();
+			}
 		}
 	}
 	public class MoreTableSource : UITableViewSource

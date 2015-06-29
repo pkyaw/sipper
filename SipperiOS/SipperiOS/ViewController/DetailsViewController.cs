@@ -5,34 +5,44 @@ using Foundation;
 using UIKit;
 using System.Collections.Generic;
 using CoreGraphics;
-using Sipper.Service.Models.v1;
+//using Sipper.Service.Models.v1;
 using BigTed;
-using Sipper.Service.Interfaces;
-using Sipper.Service.Fakes;
+//using Sipper.Service.Interfaces;
+//using Sipper.Service.Fakes;
 using ObjCRuntime;
 using CoreLocation;
 using Google.Maps;
 using System.Drawing;
+using Sipper.Service.Core.Models.v1;
+using Autofac;
+using Sipper.Service.Core.Interfaces.v1;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Sipper.Service.Core;
 
 namespace SipperiOS
 {
 	public partial class DetailsViewController : UIViewController
 	{
-		public Account  items;
-		public List<Detail> DetailItem =  Detail.getDetail();
+//		public Account  items;
+//		public List<Detail> DetailItem =  Detail.getDetail();
 		SippModel Sipp;
-		List<SippModel> ListSipp;
-
+		SippModel SippModel;
+		List<SippReplyModel> ListSipp;
+		List<SippReplyModel> ListSippReplyModel;
 //		UIImageView imageView;
 //		UIImage image;
 //		CGPoint pt;
 		UIView subView,parentView;
-		UILabel lblFlagTitle,lblFlagDetail;
+		UILabel lblFlagTitle,lblFlagDetail,lblTableHeader;
 		UIButton btnCancel,btnFlagIt;
-		UIImageView imageViewAlert;
-		FlagView falgView;
-		MapView mapView1;
+		UIImageView imageViewAlert,imageTableHeder;
 
+		MapView mapView1;
+		UIView tableFooterView,tableHeaderView;
+		UIButton tableFooterMoreButton;
+		double latitude,longitude;
+	
 		public DetailsViewController () : base ("DetailsViewController", null)
 		{
 		}
@@ -66,42 +76,8 @@ namespace SipperiOS
 		{
 			base.ViewDidLoad ();
 			//CameraPosition camera = CameraPosition.FromCamera(
-			CameraPosition camera = CameraPosition.FromCamera (Sipp.Lat, Sipp.Lon,6);
-
-			mapView1 = MapView.FromCamera (new CGRect(0, 64, UIScreen.MainScreen.Bounds.Width, 200), camera);
-			//mapView1.Frame = new CGRect (0,64,320,200);
-			mapView1.MyLocationEnabled = true;
-
-			var xamMarker = new Marker () {
-				Title = "",
-				Snippet = "",
-				Position = new CLLocationCoordinate2D (Sipp.Lat, Sipp.Lon),
-				Map = mapView1
-			};
-
-			mapView1.SelectedMarker = xamMarker;
-			View.AddSubview (mapView1);
-			View.SendSubviewToBack (mapView1);
-			//View = mapView1;
-
-			BTProgressHUD.Show("Getting Replies...");
-
-			ISippService _service = new SippServiceFake();
-			var sipps = _service.GetSippRepliesAsync(Sipp.Id);
-
-			if (sipps.IsCompleted){
-				ListSipp = sipps.Result;
-				Console.WriteLine (sipps.Status);
-				//btnBack.SetTitle (Convert.ToString (ListSipp.Count), UIControlState.Normal);
-				//this.NavigationItem.LeftBarButtonItem.Title = Convert.ToString (ListSipp.Count);
-				//lblCounts.Text = Convert.ToString (ListSipp.Count);
-				Console.WriteLine (ListSipp.Count);
-				BTProgressHUD.Dismiss ();
-			} else {
-				Console.WriteLine (sipps.Status);
-				BTProgressHUD.Dismiss ();
-			}
-
+			GetSippByIdAsync ();
+			//getSippReply ();
 
 			this.NavigationController.NavigationBar.Hidden =  false;
 			this.NavigationController.NavigationBar.TintColor = UIColor.White;
@@ -207,25 +183,7 @@ namespace SipperiOS
 
 
 			this.NavigationController.HidesBottomBarWhenPushed = true;
-			lb_Detail.Text = Sipp.Text;
 
-			TimeSpan span = (Sipp.CreatedUtc - DateTime.Now);
-			string countHours="";
-			if (span.Days > 0 && span.Days < 365) {
-				countHours = Convert.ToString (span.Days) + " Day";
-			} else if (span.Hours > 0 && span.Hours <= 60) {
-				countHours = Convert.ToString (span.Hours) + " Hour";
-			} else if (span.Minutes > 0 && span.Minutes <= 60) {
-				countHours = Convert.ToString (span.Minutes) + " Minute";
-			}else if (span.Seconds > 0 && span.Seconds <= 60) {
-				countHours = Convert.ToString (span.Seconds) + " Second";
-			}
-			lb_Hours.Text = countHours;
-			lb_Reply.Text = Convert.ToString(Sipp.RepliesCount) + " replies"; 
-			lb_SipperCount.Text = Convert.ToString(Sipp.VoteCount);
-
-			tableView.Source = new DetailTableSource (ListSipp,this, this.tableView);
-			tableView.ReloadData ();
 
 			btn_Down.TouchUpInside += (object sender, EventArgs e) => {
 				int flag = Convert.ToInt32(lb_SipperCount.Text) - 1;
@@ -239,7 +197,7 @@ namespace SipperiOS
 				lb_SipperCount.Text = Convert.ToString(flag);
 			};
 			btnMap.TouchUpInside += (object sender, EventArgs e) => {
-				MapViewController DetailView = new MapViewController (Sipp);
+				MapViewController DetailView = new MapViewController (SippModel);
 				DetailView.HidesBottomBarWhenPushed = true;
 				this.NavigationController.PushViewController (DetailView, true);
 			};
@@ -252,53 +210,279 @@ namespace SipperiOS
 
 
 			};
-	
+			btnSendReply.TouchUpInside += async (object sender, EventArgs e) => {
+				if (AppData.latitude == 0.0 || AppData.longitude == 0.0 || AppData.latitude == null || AppData.longitude == null) { 
+					latitude = 0.0;
+					longitude = 0.0;
+				}
+				else{
+					latitude = AppData.latitude;
+					longitude = AppData.longitude;
+				}
+				BTProgressHUD.Show("Adding Sipp Reply...",-1,ProgressHUD.MaskType.Gradient);
+				try
+				{
+					string userId = NSUserDefaults.StandardUserDefaults.StringForKey("userId");
+					var container = Setup.RegisterContainerBuilder ();
+					using (var scope = container.BeginLifetimeScope())
+					{
+						var sippService = scope.Resolve<ISippService>();
+						ServiceResult<SippReplyModel> addSippReply = await sippService.AddSippReplyAsync(new Guid(userId),new SippReplyModelAdd()
+							{
+								Text = sippBackTextField.Text,
+								Handle = Sipp.Handle,
+								ParentId = Sipp.Id,
+								Lat = latitude,
+								Lon = longitude
+							});
+						if (addSippReply == null) 
+						{
+							System.Console.WriteLine("Error");
+						}
+						else
+						{
+							System.Console.WriteLine("Add SippReply : " + JsonConvert.SerializeObject(addSippReply, Formatting.Indented));
+							GetSippByIdAsync();
+						}
+					}
+
+					BTProgressHUD.Dismiss ();
+				}
+				catch(Exception ex) {
+					Console.WriteLine ("Error :{0} ", ex.Message.ToString ());
+				}
+			};
 
 			sippBackTextField.ShouldBeginEditing += textFieldShouldBeginEditing;
 			sippBackTextField.ShouldEndEditing += textFieldShouldEndEditing;
 			sippBackTextField.ShouldReturn += TextFieldShouldReturn;
 
 		}
-//		partial void btnMapTapped (Foundation.NSObject sender){
-//			MapViewController DetailView = new MapViewController ();
-//			DetailView.HidesBottomBarWhenPushed = true;
-//			this.NavigationController.PushViewController (DetailView, true);
-//		}
-		[Export("animationStart:context:")]
-		public void initPopUpView(NSString animationID,NSObject context)
+		public async void GetSippByIdAsync()
 		{
-			falgView.BackgroundColor = UIColor.Green;
-			falgView.Alpha = 0;
-			falgView.Frame = new CGRect (160, 240, 0, 0);
-			this.View.AddSubview (falgView);
-		}
+			BTProgressHUD.Show("Getting Replies....",-1,ProgressHUD.MaskType.Gradient);
+			try
+			{
+				var container = Setup.RegisterContainerBuilder ();
 
-		public void animatedPopUpShow()
-		{
-			UIView.BeginAnimations("popAnimation");
-			UIView.SetAnimationDuration(0.3);
-			UIView.SetAnimationDelegate(this);
-			UIView.SetAnimationWillStartSelector (new Selector ("animationStart:context:"));
-			falgView.Alpha = 1;
-			falgView.Frame = new CGRect (20, 40, 300, 400);
-			UIView.CommitAnimations ();
+				using (var scope = container.BeginLifetimeScope())
+				{
+					var sippService = scope.Resolve<ISippService>();
+					SippModel = await sippService.GetSippByIdAsync(Sipp.Id);
+					if (SippModel == null) 
+					{
+						System.Console.WriteLine("Error");
+					}
+					else
+					{
+						ListSippReplyModel = SippModel.Replies;
+						if(ListSippReplyModel.Count > 0)
+						{
+							//tableView.TableHeaderView.Frame = (new CGRect(0,0,0,0));
+							//tableView.TableHeaderView.RemoveFromSuperview();
+							tableFooterView = new UIView (new CGRect(0,0,tableView.Bounds.Width,44));
+							tableFooterView.BackgroundColor = UIColor.Clear;
+							tableFooterMoreButton = new UIButton (new CGRect(0,0,tableFooterView.Bounds.Width,44));
+							tableFooterMoreButton.SetTitle ("More", UIControlState.Normal);
+							tableFooterMoreButton.SetTitleColor(UIColor.FromRGB(45,154,212),UIControlState.Normal);
+							tableFooterMoreButton.TouchUpInside += tableFooterMoreButtonClicked;
+							tableFooterView.AddSubview (tableFooterMoreButton);
+							tableView.TableFooterView = tableFooterView;
+						}
+						else
+						{
+							tableHeaderView = new UIView (new CGRect(0,0,tableView.Bounds.Width,tableView.Bounds.Width));
+							tableHeaderView.BackgroundColor = UIColor.Clear;
+							imageTableHeder = new UIImageView(new CGRect((tableView.Bounds.Width-124)/2,0,124,124));
+							imageTableHeder.Image = UIImage.FromFile("ic_comments.png");
+							imageTableHeder.ContentMode = UIViewContentMode.ScaleAspectFit;
+							lblTableHeader = new UILabel(new CGRect((tableView.Bounds.Width-124)/2,128,124,21));
+							lblTableHeader.Text = "No replies yet";
+							tableHeaderView.AddSubview(lblTableHeader);
+							tableHeaderView.AddSubview (imageTableHeder);
+							tableView.TableHeaderView = tableHeaderView;
+							//tableView.TableFooterView.Hidden = true;
+						}
+
+						CameraPosition camera = CameraPosition.FromCamera (SippModel.Lat, SippModel.Lon,6);
+
+						mapView1 = MapView.FromCamera (new CGRect(0, 64, UIScreen.MainScreen.Bounds.Width, 200), camera);
+						//mapView1.Frame = new CGRect (0,64,320,200);
+						mapView1.MyLocationEnabled = true;
+
+						var xamMarker = new Marker () {
+							Title = "",
+							Snippet = "",
+							Position = new CLLocationCoordinate2D (SippModel.Lat, SippModel.Lon),
+							Map = mapView1
+						};
+
+						mapView1.SelectedMarker = xamMarker;
+						View.AddSubview (mapView1);
+						View.SendSubviewToBack (mapView1);
+
+						lb_Detail.Text = SippModel.Text;
+
+						DateTime iKnowThisIsUtc = SippModel.CreatedUtc;
+						DateTime runtimeKnowsThisIsUtc = DateTime.SpecifyKind(
+							iKnowThisIsUtc,
+							DateTimeKind.Utc);
+						DateTime localVersion = runtimeKnowsThisIsUtc.ToLocalTime();
+
+						TimeSpan span = (DateTime.Now - localVersion);
+						string countHours="";
+						if (span.Days > 0 && span.Days < 365) {
+							countHours = Convert.ToString (span.Days) + " Day";
+						} else if (span.Hours > 0 && span.Hours <= 60) {
+							countHours = Convert.ToString (span.Hours) + " Hour";
+						} else if (span.Minutes > 0 && span.Minutes <= 60) {
+							countHours = Convert.ToString (span.Minutes) + " Minute";
+						}else if (span.Seconds > 0 && span.Seconds <= 60) {
+							countHours = Convert.ToString (span.Seconds) + " Second";
+						}
+						lb_Hours.Text = countHours;
+						lb_Reply.Text = Convert.ToString(SippModel.RepliesCount) + " replies"; 
+						lb_SipperCount.Text = Convert.ToString(SippModel.VoteCount);
+
+						tableView.Source = new DetailTableSource (ListSippReplyModel,this, this.tableView);
+						tableView.ReloadData ();
+						//System.Console.WriteLine("Sipp Reply : " + JsonConvert.SerializeObject(ListSipp, Formatting.Indented));
+						System.Console.WriteLine("Get Sipp By ID : " + JsonConvert.SerializeObject(SippModel, Formatting.Indented));
+					}
+				}
+				BTProgressHUD.Dismiss ();
+			}
+			catch(Exception e) {
+				Console.WriteLine ("Error : ", e.Message.ToString ());
+				BTProgressHUD.Dismiss ();
+			}
 		}
+//		public async void getSippReply()
+//		{
+//			BTProgressHUD.Show("Getting Replies....",-1,ProgressHUD.MaskType.Gradient);
+//			try
+//			{
+//				var container = Setup.RegisterContainerBuilder ();
+//
+//				using (var scope = container.BeginLifetimeScope())
+//				{
+//					var sippService = scope.Resolve<ISippService>();
+//					ListSipp = await sippService.GetSippRepliesAsync(Sipp.Id, skip:0,take:20);
+//					if (ListSipp == null) 
+//					{
+//						System.Console.WriteLine("Error");
+//					}
+//					else
+//					{
+//						if(ListSipp.Count > 0)
+//						{
+//							//tableView.TableHeaderView.Frame = (new CGRect(0,0,0,0));
+//							//tableView.TableHeaderView.RemoveFromSuperview();
+//							tableFooterView = new UIView (new CGRect(0,0,tableView.Bounds.Width,44));
+//							tableFooterView.BackgroundColor = UIColor.Clear;
+//							tableFooterMoreButton = new UIButton (new CGRect(0,0,tableFooterView.Bounds.Width,44));
+//							tableFooterMoreButton.SetTitle ("More", UIControlState.Normal);
+//							tableFooterMoreButton.SetTitleColor(UIColor.FromRGB(45,154,212),UIControlState.Normal);
+//							tableFooterMoreButton.TouchUpInside += tableFooterMoreButtonClicked;
+//							tableFooterView.AddSubview (tableFooterMoreButton);
+//							tableView.TableFooterView = tableFooterView;
+//						}
+//						else
+//						{
+//							tableHeaderView = new UIView (new CGRect(0,0,tableView.Bounds.Width,tableView.Bounds.Width));
+//							tableHeaderView.BackgroundColor = UIColor.Clear;
+//							imageTableHeder = new UIImageView(new CGRect((tableView.Bounds.Width-124)/2,0,124,124));
+//							imageTableHeder.Image = UIImage.FromFile("ic_comments.png");
+//							imageTableHeder.ContentMode = UIViewContentMode.ScaleAspectFit;
+//							lblTableHeader = new UILabel(new CGRect((tableView.Bounds.Width-124)/2,128,124,21));
+//							lblTableHeader.Text = "No replies yet";
+//							tableHeaderView.AddSubview(lblTableHeader);
+//							tableHeaderView.AddSubview (imageTableHeder);
+//							tableView.TableHeaderView = tableHeaderView;
+//							//tableView.TableFooterView.Hidden = true;
+//						}
+//						tableView.Source = new DetailTableSource (ListSipp,this, this.tableView);
+//						tableView.ReloadData ();
+//						System.Console.WriteLine("Sipp Reply : " + JsonConvert.SerializeObject(ListSipp, Formatting.Indented));
+//					}
+//				}
+//				BTProgressHUD.Dismiss ();
+//			}
+//			catch(Exception e) {
+//				Console.WriteLine ("Error : ", e.Message.ToString ());
+//				BTProgressHUD.Dismiss ();
+//			}
+//		}
+		public async void tableFooterMoreButtonClicked(object sender, EventArgs e)
+		{
+			List<SippReplyModel> ListSippNext;
+			BTProgressHUD.Show("Getting Replies....",-1,ProgressHUD.MaskType.Gradient);
+			var container = Setup.RegisterContainerBuilder ();
+			using (var scope = container.BeginLifetimeScope())
+			{
+				var sippService = scope.Resolve<ISippService>();
+				ListSippNext = await sippService.GetSippRepliesAsync(Sipp.Id, skip:ListSippReplyModel.Count,take:20);
+				if (ListSippNext == null) 
+				{
+					System.Console.WriteLine("Error");
+					BTProgressHUD.Dismiss();
+				}
+				else
+				{
+					ListSippReplyModel.AddRange(ListSippNext);
+					tableFooterView.AddSubview (tableFooterMoreButton);
+					tableView.TableFooterView = tableFooterView;
+					tableView.Source = new DetailTableSource (ListSippReplyModel,this, this.tableView);
+					tableView.ReloadData ();
+					System.Console.WriteLine("Get Next New Sipps: " + JsonConvert.SerializeObject(ListSippNext, Formatting.Indented));
+					BTProgressHUD.Dismiss();
+				}
+
+			}
+		}
+//		[Export("animationStart:context:")]
+//		public void initPopUpView(NSString animationID,NSObject context)
+//		{
+//			falgView.BackgroundColor = UIColor.Green;
+//			falgView.Alpha = 0;
+//			falgView.Frame = new CGRect (160, 240, 0, 0);
+//			this.View.AddSubview (falgView);
+//		}
+//
+//		public void animatedPopUpShow()
+//		{
+//			UIView.BeginAnimations("popAnimation");
+//			UIView.SetAnimationDuration(0.3);
+//			UIView.SetAnimationDelegate(this);
+//			UIView.SetAnimationWillStartSelector (new Selector ("animationStart:context:"));
+//			falgView.Alpha = 1;
+//			falgView.Frame = new CGRect (20, 40, 300, 400);
+//			UIView.CommitAnimations ();
+//		}
 		public bool  textFieldShouldBeginEditing(UITextField textField)
 		{
-			View.Frame = new CGRect (0, -216, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height);
-
+			UIView.Animate(0.25,() =>{
+				View.Frame = new CGRect (0, -225, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height);
+			});
 			return true;
  		}
 
 		public bool  textFieldShouldEndEditing(UITextField textField)
 		{
-			View.Frame = new CGRect (0, 0, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height);
+			UIView.Animate(0.25,() =>{
+				
+				View.Frame = new CGRect (0, 0, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height);
+			});
+
 
 			return true;
 		}
 		public bool TextFieldShouldReturn(UITextField textField)
 		{
-			View.Frame = new CGRect (0, 0, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height);
+			UIView.Animate(0.25,() =>{
+				View.Frame = new CGRect (0, 0, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height);
+			});
+
 			sippBackTextField.ResignFirstResponder ();
 			return true;
 		}
@@ -310,8 +494,8 @@ namespace SipperiOS
 
 		//List<Detail> tableItems;
 		DetailsViewController DetailVC;
-		List<SippModel> ListSipp;
-		public DetailTableSource(List<SippModel> ListSipp,DetailsViewController  DetailVC , UITableView tableView)
+		List<SippReplyModel> ListSipp;
+		public DetailTableSource(List<SippReplyModel> ListSipp,DetailsViewController  DetailVC , UITableView tableView)
 		{
 			this.ListSipp = ListSipp;
 			this.DetailVC = DetailVC;
@@ -331,7 +515,13 @@ namespace SipperiOS
 			if (cell == null)
 				cell = new DetailScreenCell (UITableViewCellStyle.Default, "DetailCell");
 
-			cell.UpdateCell (ListSipp [indexPath.Row].Text,Convert.ToString(ListSipp [indexPath.Row].CreatedUtc), "ic_peek_violet.png", ListSipp [indexPath.Row].VoteCount);
+			DateTime iKnowThisIsUtc = ListSipp[indexPath.Row].CreatedUtc;
+			DateTime runtimeKnowsThisIsUtc = DateTime.SpecifyKind(
+				iKnowThisIsUtc,
+				DateTimeKind.Utc);
+			DateTime localVersion = runtimeKnowsThisIsUtc.ToLocalTime();
+
+			cell.UpdateCell (ListSipp [indexPath.Row].Text,localVersion, "ic_peek_violet.png", ListSipp [indexPath.Row].VoteCount);
 
 			var up = new UIButton (UIButtonType.System);
 			var down = new UIButton (UIButtonType.System);

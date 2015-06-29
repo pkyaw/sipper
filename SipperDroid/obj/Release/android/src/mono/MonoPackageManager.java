@@ -80,13 +80,16 @@ public class MonoPackageManager {
 class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		"SipperDroid.dll",
-		"Sipper.Core.dll",
-		"Sipper.Service.dll",
 		"Xamarin.Android.Support.v4.dll",
 		"Xamarin.Android.Support.v7.AppCompat.dll",
 		"Refractored.PagerSlidingTabStrip.dll",
 		"GooglePlayServicesLib.dll",
 		"Xamarin.Android.Support.v7.MediaRouter.dll",
+		"Autofac.dll",
+		"Newtonsoft.Json.dll",
+		"Sipper.Service.Portable.dll",
+		"Sipper.Core.dll",
+		"Sipper.Service.Core.dll",
 		"SipperPCL.dll",
 		"System.Collections.Concurrent.dll",
 		"System.Collections.dll",

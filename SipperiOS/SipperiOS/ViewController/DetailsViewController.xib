@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="btnBack" destination="rAy-8b-svK" id="oM5-X3-Br2"/>
                 <outlet property="btnMap" destination="XUn-3X-bl8" id="Tov-iI-gLr"/>
+                <outlet property="btnSendReply" destination="8oj-OM-jsv" id="B93-lM-cqw"/>
                 <outlet property="btn_Down" destination="x7O-MI-QtG" id="EqC-I6-nK0"/>
                 <outlet property="btn_flag" destination="Mz5-8g-U4M" id="bld-Ap-ih4"/>
                 <outlet property="btn_up" destination="saG-B1-bcs" id="tqe-cJ-fi8"/>
@@ -140,7 +141,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 Reply" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dES-gw-u6e">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dES-gw-u6e">
                             <rect key="frame" x="124" y="171" width="100" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="zfG-U5-qcS"/>
@@ -149,7 +150,7 @@
                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21 hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fl-U9-xhW">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fl-U9-xhW">
                             <rect key="frame" x="40" y="171" width="80" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="UTh-Fz-QBt"/>
@@ -159,7 +160,7 @@
                             <color key="textColor" red="0.12549019610000001" green="0.5450980392" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="highlightedColor" red="0.12549019607843137" green="0.54509803921568623" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh9-bm-BjK">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh9-bm-BjK">
                             <rect key="frame" x="248" y="81" width="50" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="5x6-Js-Lx9"/>
@@ -191,7 +192,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ops, sorry about that. I updated my  code, so now  It should not give you that error." lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="CFH-VS-Qio">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="CFH-VS-Qio">
                             <rect key="frame" x="40" y="10" width="200" height="150"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>

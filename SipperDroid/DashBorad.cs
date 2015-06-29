@@ -12,14 +12,19 @@ using Android.Views;
 using Android.Widget;
 using Android.Graphics;
 using Android.Net;
-using Sipper.Service.Interfaces;
-using Sipper.Service.Fakes;
-using Sipper.Service.Models.v1;
+
 using Android.Support.V4.Widget;
+using Sipper.Service.Core.Models.v1;
+using Sipper.Service.Core.Interfaces.v1;
+using Autofac;
+using Sipper.Service.Portable;
+using Sipper.Service.Portable.v1;
+using SipperShared;
+using Newtonsoft.Json;
 
 namespace SipperDroid
 {
-	[Activity (Label = "DashBorad", Theme = "@android:style/Theme.Holo.Light")]			
+	[Activity (Label = "DashBorad", Theme = "@android:style/Theme.DeviceDefault.Light.NoActionBar")]			
 	public class DashBorad : Activity
 	{
 		ListView lvlist;
@@ -32,11 +37,10 @@ namespace SipperDroid
 		SwipeRefreshLayout refresher;
 		CustomListView customAdapter;
 		View footer;
-		int k = 0;
-		int i = 10;
-		ISippService _service;
-		int Total_Record = 0;
+		int HotNew = 0;
+		static Guid deviceId;
 
+	
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -47,17 +51,29 @@ namespace SipperDroid
 			tvNew = FindViewById<TextView> (Resource.Id.tvNew);
 			tvHot = FindViewById<TextView> (Resource.Id.tvHot);
 			sendsipper = FindViewById<ImageView> (Resource.Id.ivsendsipper);
-
 			ListSipp = new List<SippModel> ();
-			progress = new ProgressDialog (this);
-			_service = new SippServiceFake ();
-			ListSipp.Clear ();
+			progress = new ProgressDialog (this, AlertDialog.ThemeDeviceDefaultLight);
+			progress.Indeterminate = true;
+			progress.SetProgressStyle (ProgressDialogStyle.Spinner);
+			progress.SetMessage ("Getting Sipp...");
+			progress.SetCancelable (false);
+
+			string value = PreferenceManager1.GetDeviceId ();
+			if (string.IsNullOrEmpty (value)) {
+				deviceId = Guid.NewGuid ();
+				string deviceIdString = deviceId.ToString ();
+				PreferenceManager1.SetDeviceId (deviceIdString);
+			} else {
+				deviceId = new Guid (value);
+			}
+
+			GetSipperData ();
+			refresher.Refreshing = false;
 
 			footer = ((LayoutInflater)this.GetSystemService (Context.LayoutInflaterService)).Inflate (Resource.Layout.footer_layout, null, false); 
 			lvlist.AddFooterView (footer);
 			footer.Click += Footer_Click;
-			progress.Show ();
-			GetSipperData ();
+
 
 			refresher.Refresh += Refresher_Refresh;
 			tvNew.Click += TvNew_Click;
@@ -70,34 +86,44 @@ namespace SipperDroid
 
 		void Refresher_Refresh (object sender, EventArgs e)
 		{
-			ListSipp.Clear ();
 			GetSipperData ();
 			refresher.Refreshing = false;
 		}
 
-		void Footer_Click (object sender, EventArgs e)
+		async void Footer_Click (object sender, EventArgs e)
 		{
-			var sipps = _service.GetAllSippsAsync ();
-			ListSipp.Clear ();
-			if (sipps.IsCompleted) {
-				int n = i + 10;
-				if (Total_Record > n) {
-					
-					for (k = 0; k < n; k++) {
-						ListSipp.Add (sipps.Result [k]);
+			progress.Show ();
+
+
+			try {
+				List<SippModel> ListSippMore = new List<SippModel> ();
+				var container = Setup.RegisterContainerBuilder ();
+
+				using (var scope = container.BeginLifetimeScope ()) {
+					var sippService = scope.Resolve<ISippService> ();
+
+					if (HotNew == 0) {
+						ListSippMore = await sippService.GetSippsAsync (skip: ListSipp.Count, take: 20, sippType: SippType.Hot);
+					} else {
+						ListSippMore = await sippService.GetSippsAsync (skip: ListSipp.Count, take: 20, sippType: SippType.New);
 					}
-					i = n;
-					tvCount.Text = Convert.ToString (ListSipp.Count);
-					progress.Dismiss ();
-				} else {
-					//lvlist.RemoveFooterView (footer);
+
+					if (ListSippMore == null) {
+						System.Console.WriteLine ("Error");
+					} else {
+
+						ListSipp.AddRange (ListSippMore);
+						tvCount.Text = Convert.ToString (ListSipp.Count);
+						customAdapter = new CustomListView (this, ListSipp);
+						lvlist.Adapter = customAdapter;
+					}
 				}
-			} else {
-				Console.WriteLine (sipps.Status);
+				progress.Dismiss ();
+			} catch (Exception es) {
+				Console.WriteLine ("Error :{0} ", es.Message.ToString ());
 				progress.Dismiss ();
 			}
-			customAdapter = new CustomListView (this, ListSipp);
-			lvlist.Adapter = customAdapter;
+
 		}
 
 		void Lvlist_ItemLongClick (object sender, AdapterView.ItemLongClickEventArgs e)
@@ -120,41 +146,53 @@ namespace SipperDroid
 
 		public async void DeleteSipper (int position)
 		{
-			var sipps = _service.DeleteSippAsync (ListSipp [position].Id);
-			if (sipps.IsCompleted) {
-				AlertDialog alertDialog = new AlertDialog.Builder (this).Create ();
-				alertDialog.SetTitle ("Success");
-				alertDialog.SetMessage ("Sipper Delete Successfull");
-				alertDialog.SetCancelable (false);
-				alertDialog.SetButton ("Ok", (object sende, DialogClickEventArgs es) => {
+//			var sipps = _service.DeleteSippAsync (ListSipp [position].Id);
+//			if (sipps.IsCompleted) {
+//				AlertDialog alertDialog = new AlertDialog.Builder (this).Create ();
+//				alertDialog.SetTitle ("Success");
+//				alertDialog.SetMessage ("Sipper Delete Successfull");
+//				alertDialog.SetCancelable (false);
+//				alertDialog.SetButton ("Ok", (object sende, DialogClickEventArgs es) => {
+//
+//					alertDialog.Dismiss ();
+//					GetSipperData ();
+//				});
+//				alertDialog.Show ();
+//			}
 
-					alertDialog.Dismiss ();
-					GetSipperData ();
-				});
-				alertDialog.Show ();
-			}
 		}
 
-		public void GetSipperData ()
+		public async void GetSipperData ()
 		{
-			var sipps = _service.GetAllSippsAsync ();
-
-		
-			if (sipps.IsCompleted) {
+			progress.Show ();
+			try {
 				
-				for (int j = 0; j < 10; j++) {
-					ListSipp.Add (sipps.Result [j]);
+				var container = Setup.RegisterContainerBuilder ();
+
+				using (var scope = container.BeginLifetimeScope ()) {
+					var sippService = scope.Resolve<ISippService> ();
+
+					if (HotNew == 0) {
+						ListSipp = await sippService.GetSippsAsync (skip: 0, take: 20, sippType: SippType.Hot);
+					} else {
+						ListSipp = await sippService.GetSippsAsync (skip: 0, take: 20, sippType: SippType.New);
+					}
+				
+					if (ListSipp == null) {
+						System.Console.WriteLine ("Error");
+					} else {
+							
+							
+					}
 				}
-				tvCount.Text = Convert.ToString (ListSipp.Count);
 				progress.Dismiss ();
-			} else {
-				Console.WriteLine (sipps.Status);
+			} catch (Exception e) {
+				Console.WriteLine ("Error :{0} ", e.Message.ToString ());
 				progress.Dismiss ();
 			}
+			tvCount.Text = Convert.ToString (ListSipp.Count);
 			customAdapter = new CustomListView (this, ListSipp);
 			lvlist.Adapter = customAdapter;
-			ListSipp = sipps.Result;
-			Total_Record = ListSipp.Count;
 
 		}
 
@@ -162,7 +200,6 @@ namespace SipperDroid
 		{
 			base.OnResume ();
 			if (Utility.GetSessionData (this, "isSend", false)) {
-				ListSipp.Clear ();
 				GetSipperData ();
 				Utility.SetSessionData (this, "isSend", false);
 			}
@@ -185,18 +222,24 @@ namespace SipperDroid
 		{
 			tvHot.SetBackgroundResource (Resource.Drawable.btn_tab_hot_off);
 			tvNew.SetBackgroundResource (Resource.Drawable.btn_tab_new_on);
+			HotNew = 0;
+			GetSipperData ();
 		}
 
 		void TvHot_Click (object sender, EventArgs e)
 		{
 			tvHot.SetBackgroundResource (Resource.Drawable.btn_tab_hot_on);
 			tvNew.SetBackgroundResource (Resource.Drawable.btn_tab_new_off);
+			HotNew = 1;
+			GetSipperData ();
 		}
 
 		void ivsendsipper_Click (object sender, EventArgs e)
 		{
 			StartActivity (typeof(SendSipper));
 		}
+
+
 
 	}
 }

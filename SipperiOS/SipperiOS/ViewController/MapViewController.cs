@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
-using Sipper.Service.Models.v1;
+//using Sipper.Service.Models.v1;
+using Sipper.Service.Core.Models.v1;
 
 #if __UNIFIED__
 using UIKit;
@@ -57,7 +58,7 @@ namespace SipperiOS
 			//this.NavigationController.NavigationItem.LeftBarButtonItem.Title = "Back";
 			UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes { TextColor = UIColor.White }); 
 			Title = "Map";
-			CameraPosition camera = CameraPosition.FromCamera (Sipp.Lat, Sipp.Lon, 6);
+			CameraPosition camera = CameraPosition.FromCamera(Sipp.Lat, Sipp.Lon, 6);
 
 			mapView = MapView.FromCamera (new CGRect(0,64,UIScreen.MainScreen.Bounds.Width,UIScreen.MainScreen.Bounds.Height-64), camera);
 			mapView.MyLocationEnabled = true;

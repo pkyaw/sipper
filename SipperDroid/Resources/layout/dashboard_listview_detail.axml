@@ -6,10 +6,10 @@
     <LinearLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="3"
         android:orientation="vertical">
         <RelativeLayout
-            android:layout_height="85dp"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_gravity="center"
             android:padding="10dp"
@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="251"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"
                 android:textSize="20dp"
                 android:textStyle="normal"
@@ -37,8 +37,8 @@
                     android:layout_width="wrap_content"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:gravity="center"
                     android:text="Details"
                     android:textSize="20dp"
@@ -165,7 +165,7 @@
         </RelativeLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:background="@android:color/background_light"
@@ -177,6 +177,24 @@
             android:layout_height="wrap_content"
             android:dividerHeight="1dp"
             android:divider="@color/txt_dark_gray" />
+        <LinearLayout
+            android:id="@+id/ivEmptylist"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_comments"
+                android:gravity="center" />
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:text="No Comment yet" />
+        </LinearLayout>
         <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent">

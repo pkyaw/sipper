@@ -79,11 +79,11 @@ namespace SipperiOS
 			ContentView.AddSubviews(cellView);
 
 		}
-		public void UpdateCell (string detail, string createdUtc, string repliesImage ,int voteCount)
+		public void UpdateCell (string detail, DateTime createdUtc, string repliesImage ,int voteCount)
 		{
 
 			//imageView.Image = image;
-			TimeSpan span = (Convert.ToDateTime(createdUtc) - DateTime.Now);
+			TimeSpan span = (DateTime.Now - createdUtc);
 
 			String.Format("{0} days, {1} hours, {2} minutes, {3} seconds", 
 				span.Days, span.Hours, span.Minutes, span.Seconds);

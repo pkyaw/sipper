@@ -66,6 +66,10 @@ SipperDroid.DetailDialogFragment, SipperDroid;md529692d5e20badb16c9c8b3d0e30e8f0
 SipperDroid.DetailDialogFragment, SipperDroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md529692d5e20badb16c9c8b3d0e30e8f0a.DetailDialogFragment
 SipperDroid.DetailDialogFragment;md529692d5e20badb16c9c8b3d0e30e8f0a.DetailDialogFragment
 sipperdroid.DetailDialogFragment;md529692d5e20badb16c9c8b3d0e30e8f0a.DetailDialogFragment
+SipperDroid.PreferenceManager1, SipperDroid;md529692d5e20badb16c9c8b3d0e30e8f0a.PreferenceManager1
+SipperDroid.PreferenceManager1, SipperDroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md529692d5e20badb16c9c8b3d0e30e8f0a.PreferenceManager1
+SipperDroid.PreferenceManager1;md529692d5e20badb16c9c8b3d0e30e8f0a.PreferenceManager1
+sipperdroid.PreferenceManager1;md529692d5e20badb16c9c8b3d0e30e8f0a.PreferenceManager1
 Android.Support.V4.View.ViewPager/IOnPageChangeListenerImplementor, Xamarin.Android.Support.v4;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor
 Android.Support.V4.View.ViewPager/IOnPageChangeListenerImplementor, Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor
 Android.Support.V4.View.ViewPager.IOnPageChangeListenerImplementor;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor

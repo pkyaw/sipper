@@ -3,11 +3,18 @@ using System;
 
 using Foundation;
 using UIKit;
+using BigTed;
+using Sipper.Service.Core.Interfaces.v1;
+using Autofac;
+using Newtonsoft.Json;
+using Sipper.Service.Core.Models.v1;
+using System.Collections.Generic;
 
 namespace SipperiOS
 {
 	public partial class PeekViewController : UIViewController
 	{
+		List<PeekModel> ListPeekModel;
 		public PeekViewController () : base ("PeekViewController", null)
 		{
 		}
@@ -19,7 +26,11 @@ namespace SipperiOS
 			
 			// Release any cached data, images, etc that aren't in use.
 		}
-
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+			getPeek ();
+		}
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -43,6 +54,35 @@ namespace SipperiOS
 
 				}), true);
 			// Perform any additional setup after loading the view, typically from a nib.
+		}
+		public async void getPeek()
+		{
+
+			BTProgressHUD.Show("Getting Peek...",-1,ProgressHUD.MaskType.Gradient);
+			try
+			{
+				var container = Setup.RegisterContainerBuilder ();
+
+				using (var scope = container.BeginLifetimeScope())
+				{
+					var sippService = scope.Resolve<IPeekService>();
+					ListPeekModel = await sippService.GetPeeksAsync(skip:0,take:20);
+
+					if (ListPeekModel == null) 
+					{
+						System.Console.WriteLine("Error");
+					}
+					else
+					{
+						System.Console.WriteLine("Get Peek: " + JsonConvert.SerializeObject(ListPeekModel, Formatting.Indented));
+					}
+				}
+				BTProgressHUD.Dismiss ();
+			}
+			catch(Exception e) {
+				Console.WriteLine ("Error : ", e.Message.ToString ());
+				BTProgressHUD.Dismiss ();
+			}
 		}
 	}
 }

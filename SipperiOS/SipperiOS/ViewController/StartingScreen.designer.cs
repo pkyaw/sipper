@@ -12,11 +12,15 @@ namespace SipperiOS
 	[Register ("StartingScreen")]
 	partial class StartingScreen
 	{
-		[Action ("btn_Continue:")]
-		partial void btn_Continue (Foundation.NSObject sender);
+		[Outlet]
+		UIKit.UIButton btnContine { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnContine != null) {
+				btnContine.Dispose ();
+				btnContine = null;
+			}
 		}
 	}
 }

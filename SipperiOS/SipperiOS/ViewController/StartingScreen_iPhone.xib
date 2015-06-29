@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StartingScreen">
             <connections>
+                <outlet property="btnContine" destination="u1a-7m-lca" id="qhB-p0-Zsh"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
             </connections>
         </placeholder>
@@ -41,9 +42,6 @@ permission to use your location.</string>
                     <state key="normal" image="btn_continue.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="btn_Continue:" destination="-1" eventType="touchUpInside" id="Os6-EU-7HB"/>
-                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

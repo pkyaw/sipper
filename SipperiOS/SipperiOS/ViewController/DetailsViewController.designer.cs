@@ -28,6 +28,9 @@ namespace SipperiOS
 		UIKit.UIButton btnMap { get; set; }
 
 		[Outlet]
+		UIKit.UIButton btnSendReply { get; set; }
+
+		[Outlet]
 		UIKit.UILabel lb_Detail { get; set; }
 
 		[Outlet]
@@ -100,6 +103,11 @@ namespace SipperiOS
 			if (tableView != null) {
 				tableView.Dispose ();
 				tableView = null;
+			}
+
+			if (btnSendReply != null) {
+				btnSendReply.Dispose ();
+				btnSendReply = null;
 			}
 		}
 	}

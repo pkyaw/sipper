@@ -62,7 +62,6 @@
                         <constraint firstItem="Sdd-8u-J6C" firstAttribute="leading" secondItem="Qh7-tf-xAT" secondAttribute="leading" constant="20" id="JGT-7s-Hxw"/>
                         <constraint firstAttribute="height" constant="64" id="fbK-HY-ssg"/>
                         <constraint firstItem="Sdd-8u-J6C" firstAttribute="top" secondItem="Qh7-tf-xAT" secondAttribute="top" constant="26" id="hb4-bE-fIV"/>
-                        <constraint firstAttribute="width" constant="320" id="xZq-vx-d4Y"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="toK-F2-cHT">

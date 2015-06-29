@@ -36,6 +36,19 @@ namespace SipperDroid
 			ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences (c); 
 			return prefs.GetBoolean (key, value);
 		}
+
+		public static void SetSessionText(Context c,String key,String value)
+		{
+			ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences (c); 
+			ISharedPreferencesEditor editor = prefs.Edit ();
+			editor.PutString (key, value);
+			editor.Apply ();
+		}
+		public static String GetSessionText(Context c,String key,String value)
+		{
+			ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences (c); 
+			return prefs.GetString (key,null);
+		}
 	}
 }
 

@@ -10,15 +10,14 @@ using Sipper.Service.Core.Models.v1;
 
 namespace SipperDroid
 {
-	public class CustomListView: BaseAdapter<SippModel>
+	public class CustomListView: BaseAdapter<post>
 	{
 		Activity context;
-		List<SippModel> list;
-		SippModel item;
+		List<post> list;
+		post item;
 		int upCount, downCount;
-		SippModelUpdate model;
 
-		public CustomListView (Activity _context, List<SippModel> _list)
+		public CustomListView (Activity _context, List<post> _list)
 			: base ()
 		{
 			this.context = _context;
@@ -34,23 +33,10 @@ namespace SipperDroid
 			return position;
 		}
 
-		public override SippModel this [int index] {
+		public override post this [int index] {
 			get { return list [index]; }
 		}
 
-		public void addAll (List<SippModel> mlist)
-		{
-			try {
-				if (mlist != null) {
-					list.Clear ();
-					list.AddRange (mlist);
-				}
-
-			} catch (Exception e) {
-				Console.WriteLine (e.Message);
-			}
-
-		}
 
 		public override View GetView (int position, View convertView, ViewGroup parent)
 		{
@@ -61,7 +47,6 @@ namespace SipperDroid
 			if (convertView == null) {
 				convertView = context.LayoutInflater.Inflate (Resource.Layout.list_view_adapter, parent, false);
 				holder = new Viewholder ();
-				model = new SippModelUpdate ();
 			
 				holder.tvDescription = convertView.FindViewById<TextView> (Resource.Id.Text1);
 				holder.tvRightNumber = convertView.FindViewById<TextView> (Resource.Id.Text2);
@@ -69,19 +54,15 @@ namespace SipperDroid
 				holder.tvReply = convertView.FindViewById<TextView> (Resource.Id.tvReply);
 				holder.imageUp = convertView.FindViewById<ImageView> (Resource.Id.ImageUp);
 				holder.imageDown = convertView.FindViewById<ImageView> (Resource.Id.ImageDown);
-				holder.tvRightNumber.Text = Convert.ToString (list [position].UpVoteCount - list [position].DownVoteCount);
+				holder.tvRightNumber.Text = Convert.ToString (list [position].duration);
 				holder.tvHandle = convertView.FindViewById<TextView> (Resource.Id.tvHandle);
 
 				holder.imageUp.Click += (object sender, EventArgs e) => {
-					upCount = list [position].UpVoteCount++;
 					upCount = upCount + 1;
-					downCount = list [position].DownVoteCount;
 					holder.tvRightNumber.Text = Convert.ToString (upCount - downCount);
 				};
 
 				holder.imageDown.Click += (object sender, EventArgs e) => {
-					upCount = list [position].UpVoteCount;
-					downCount = list [position].DownVoteCount++;
 					downCount = downCount + 1;
 					holder.tvRightNumber.Text = Convert.ToString (upCount - downCount);
 				};
@@ -95,10 +76,9 @@ namespace SipperDroid
 			holder.tvRightNumber.SetTypeface (tf, TypefaceStyle.Normal);
 			holder.tvReply.SetTypeface (tf, TypefaceStyle.Normal);
 
-			holder.tvDescription.Text = item.Text;
-			holder.tvHandle.Text = item.Handle;
-			holder.tvReply.Text = item.RepliesCount + " replies";
-			holder.tvDuration.Text = Utility.GetDateDistance (item.CreatedUtc);
+			holder.tvDescription.Text = item.description;
+			holder.tvReply.Text = item.reply;
+			holder.tvDuration.Text = item.hour;
 
 			return convertView;
 		}

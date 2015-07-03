@@ -101,9 +101,7 @@
     <Compile Include="Adapter\CustomListViewDetail.cs" />
     <Compile Include="SendSipper.cs" />
     <Compile Include="Utility.cs" />
-    <Compile Include="MapActivity.cs" />
     <Compile Include="Fragment\DetailDialogFragment.cs" />
-    <Compile Include="Setup.cs" />
     <Compile Include="PreferenceManager1.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -233,7 +231,6 @@
     <AndroidResource Include="Resources\drawable\cursor.xml" />
     <AndroidResource Include="Resources\drawable\list_item_select.xml" />
     <AndroidResource Include="Resources\layout\footer_layout.axml" />
-    <AndroidResource Include="Resources\layout\map_activity.axml" />
     <AndroidResource Include="Resources\layout\dialog_fragment.axml" />
     <AndroidResource Include="Resources\drawable\btn_cancel.xml" />
     <AndroidResource Include="Resources\drawable\Dialog_background.xml" />
@@ -272,10 +269,6 @@
   <ItemGroup>
     <XamarinComponentReference Include="PagerSlidingTabStrip">
       <Version>1.0.9</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="googleplayservices">
-      <Version>22.0.0.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

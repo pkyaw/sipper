@@ -22,24 +22,15 @@ namespace SipperiOS
 
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
-			// Override point for customization after application launch.
-			// If not required for your application you can safely delete this method
-
-			// Code to start the Xamarin Test Cloud Agent
-
-
-
 			MapServices.ProvideAPIKey ("AIzaSyA8WOvgGyHaw3rgkeYuUIqkIxhmW9Hrdjc");
 
 
 			locationManager = new CLLocationManager ();
 			locationManager.Delegate = new locationManagerDelegate ();
 			locationManager.DesiredAccuracy = CLLocation.AccuracyBest; 
-			//locationManager.StartUpdatingLocation ();
 
-//			locationManager = new CLLocationManager ();
 			locationManager.RequestAlwaysAuthorization ();
-//
+
 			if (locationManager.RespondsToSelector (new Selector ("requestWhenInUseAuthorization"))) 
 			{
 				locationManager.RequestWhenInUseAuthorization ();
@@ -47,43 +38,7 @@ namespace SipperiOS
 			if (CLLocationManager.LocationServicesEnabled) {
 				locationManager.StartUpdatingLocation ();
 			}
-//
-//			locationManager.DistanceFilter = CLLocationDistance.FilterNone;
-//			locationManager.DesiredAccuracy = CLLocation.AccurracyBestForNavigation;
 
-//			if (UIDevice.CurrentDevice.CheckSystemVersion (6, 0)) 
-//			{
-//				locationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => {
-//					UpdateLocation (e.Locations [e.Locations.Length - 1]);
-//				};
-//			} else
-//			{
-//				locationManager.UpdatedLocation += (object sender, CLLocationUpdatedEventArgs e) => {
-//					UpdateLocation (e.NewLocation);
-//				};
-//			}
-//
-//
-//			if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
-//				locationManager.RequestWhenInUseAuthorization ();
-//			}
-//
-//			locationManager.UpdatedLocation += (object sender, CLLocationUpdatedEventArgs e) => {
-//				AppData.latitude = e.NewLocation.Coordinate.Latitude;
-//				AppData.longitude = e.NewLocation.Coordinate.Longitude;
-//				Console.WriteLine("{0} {0}",e.NewLocation.Coordinate.Longitude.ToString () + "º",e.NewLocation.Coordinate.Latitude.ToString () + "º");
-//			};
-//
-//			if (CLLocationManager.LocationServicesEnabled) {
-//				locationManager.StartUpdatingLocation ();
-//				Console.WriteLine ("Latitude {0}", locationManager.Location.Coordinate.Latitude);
-//				Console.WriteLine ("Longitude {0}", locationManager.Location.Coordinate.Longitude);
-//			}
-//			locationManager.UpdatedLocation += (object sender, CLLocationUpdatedEventArgs e) => {
-//				UpdateLocation(e.NewLocation);
-//				Console.WriteLine ("Latitude new  {0}", e.NewLocation.Coordinate.Latitude);
-//				Console.WriteLine ("Longitude new  {0}", e.NewLocation.Coordinate.Longitude);
-//			};
 			ProgressHUD.Shared.HudForegroundColor = UIColor.Gray;
 			ProgressHUD.Shared.Ring.Color = UIColor.FromRGB(44/255f,146/255f,208/255f);
 			ProgressHUD.Shared.HudForegroundColor = UIColor.FromRGB(44/255f,146/255f,208/255f);
@@ -91,7 +46,6 @@ namespace SipperiOS
 			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, true);
 
 			this.Window = new UIWindow (UIScreen.MainScreen.Bounds);
-			//this.Window.RootViewController = new TabBarController();
 			UINavigationController navigation = new UINavigationController(new StartingScreen());
 			navigation.NavigationBar.TintColor = UIColor.White;
 			navigation.NavigationBar.BarTintColor = UIColor.FromRGB(44/255f,146/255f,208/255f);
@@ -108,7 +62,6 @@ namespace SipperiOS
 		{
 			AppData.latitude = newLocation.Coordinate.Latitude;
 			AppData.longitude = newLocation.Coordinate.Longitude;
-			//Console.WriteLine("{0} {0}",newLocation.Coordinate.Longitude.ToString () + "º",newLocation.Coordinate.Latitude.ToString () + "º");
 		}
 		public override void OnResignActivation (UIApplication application)
 		{
@@ -146,23 +99,13 @@ namespace SipperiOS
 		public override void Failed (CLLocationManager manager, NSError error)
 		{
 			Console.WriteLine ("Failed to Get Your Location");
-//			var okAlertController = UIAlertController.Create ("Error", "Failed to Get Your Location", UIAlertControllerStyle.Alert);
-//
-//			//Add Action
-//			okAlertController.AddAction (UIAlertAction.Create ("OK", UIAlertActionStyle.Default, null));
-//
-//			// Present Alert
-//			PresentViewController (okAlertController, true, null);
 		}
 		public override void UpdatedLocation (CLLocationManager manager, CLLocation newLocation, CLLocation oldLocation){
 
 			CLLocation currentLocation = newLocation;
 			if (currentLocation != null) {
-			
 				AppData.longitude = currentLocation.Coordinate.Longitude;
 				AppData.latitude = currentLocation.Coordinate.Latitude;
-				//Console.WriteLine ("Longitude new  {0}", AppData.longitude);
-				//Console.WriteLine ("Latitude new  {0}", AppData.latitude);
 			}
 
 

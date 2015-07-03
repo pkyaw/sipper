@@ -9,29 +9,24 @@ using Autofac;
 using Sipper.Service.Core.Interfaces.v1;
 using Sipper.Service.Core.Models.v1;
 using Newtonsoft.Json;
+using System.Linq;
 
 
 namespace SipperiOS
 {
 	public partial class moreViewController : UIViewController
 	{
-
-		List<ExtraModel> ListExtraModel;
 		public moreViewController () : base ("moreViewController", null)
 		{
 		}
 		public List<moreData> items =  moreData.getMoreData();
 		public override void DidReceiveMemoryWarning ()
 		{
-			// Releases the view if it doesn't have a superview.
 			base.DidReceiveMemoryWarning ();
-			
-			// Release any cached data, images, etc that aren't in use.
 		}
 		public override void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
-			getExtras ();
 		}
 		public override void ViewDidLoad ()
 		{
@@ -45,52 +40,22 @@ namespace SipperiOS
 				ForegroundColor = UIColor.White,
 				Font = UIFont.FromName("System Bold",20.0f)
 			};
-			//UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes { TextColor = UIColor.White }); 
 			Title = "More";
 
 			this.NavigationItem.SetLeftBarButtonItem (new UIBarButtonItem(
 				"251", UIBarButtonItemStyle.Plain, (sender, args) => {
 
 				}), true);
-			// Perform any additional setup after loading the view, typically from a nib.
+			tableView.TableFooterView = new UIView(new CoreGraphics.CGRect(0.0,0.0,0.0,0.0));
 			tableView.SeparatorInset =  new UIEdgeInsets(0,40,0,40);
 			tableView.Source = new MoreTableSource (items,this,this.tableView);
 			tableView.ReloadData ();
-		}
-		public async void getExtras()
-		{
-
-			BTProgressHUD.Show("Getting More...",-1,ProgressHUD.MaskType.Gradient);
-			try
-			{
-				var container = Setup.RegisterContainerBuilder ();
-
-				using (var scope = container.BeginLifetimeScope())
-				{
-					var sippService = scope.Resolve<IExtraService>();
-					ListExtraModel = await sippService.GetExtrasAsync(skip:0,take:20);
-
-					if (ListExtraModel == null) 
-					{
-						System.Console.WriteLine("Error");
-					}
-					else
-					{
-						System.Console.WriteLine("Get More : " + JsonConvert.SerializeObject(ListExtraModel, Formatting.Indented));
-					}
-				}
-				BTProgressHUD.Dismiss ();
-			}
-			catch(Exception e) {
-				Console.WriteLine ("Error : ", e.Message.ToString ());
-				BTProgressHUD.Dismiss ();
-			}
 		}
 	}
 	public class MoreTableSource : UITableViewSource
 	{
 
-		public List<string> groups;
+		public List<string> Types;
 		List<moreData> tableItems;
 		moreViewController moreVC;
 
@@ -98,18 +63,18 @@ namespace SipperiOS
 		{
 			this.tableItems = tableItems;
 			this.moreVC = moreVC;
-			groups = moreData.getAppsUniqueGroup (this.tableItems);
+			Types = moreData.getAppsUniqueGroup (this.tableItems);
 		}
 
 
 		public override nint NumberOfSections (UITableView tableView)
 		{
-			return groups.Count;
+			return Types.Count;
 		}
 	
 		public override nint RowsInSection (UITableView tableview, nint section)
 		{
-			return moreData.getAppsForGroup (this.tableItems, groups [Convert.ToInt16 (section)]).Count; 
+			return moreData.getAppsForGroup (this.tableItems, Types [Convert.ToInt16 (section)]).Count; 
 		}
 		public override nfloat GetHeightForHeader (UITableView tableView, nint section)
 		{
@@ -122,7 +87,7 @@ namespace SipperiOS
 				UILabel myLabel = new UILabel ();
 				myLabel.Frame = new CoreGraphics.CGRect(40,16, 140, 21);
 				myLabel.TextColor = UIColor.FromRGB (141,142,151);
-				myLabel.Text = groups[Convert.ToInt16(section)];
+				myLabel.Text = Types[Convert.ToInt16(section)];
 				var font = myLabel.Font.WithSize(18);
 				myLabel.Font = font;
 				myLabel.TextColor = UIColor.FromRGB (2,160,219);
@@ -140,7 +105,7 @@ namespace SipperiOS
 				cell = new MoreScreenCell (UITableViewCellStyle.Default, "MoreCell");
 
 			moreData data;
-			data =  moreData.getAppsForGroup(tableItems,this.groups[Convert.ToInt16 (indexPath.Section)])[indexPath.Row];
+			data =  moreData.getAppsForGroup(tableItems,this.Types[Convert.ToInt16 (indexPath.Section)])[indexPath.Row];
 			if (data.item == null)
 				cell.btn_Right.Hidden = true;
 			else
@@ -150,10 +115,10 @@ namespace SipperiOS
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
 			moreData data;
-			data =  moreData.getAppsForGroup(tableItems,this.groups[Convert.ToInt16 (indexPath.Section)])[indexPath.Row];
+			data = moreData.getAppsForGroup(tableItems,this.Types[Convert.ToInt16 (indexPath.Section)])[indexPath.Row];
 			
 			if (!(data.url == null )) {
-				WebViewController webview = new WebViewController (data.url);
+				WebViewController webview = new WebViewController (data.url,data.item);
 				webview.HidesBottomBarWhenPushed = true;
 				this.moreVC.NavigationController.PushViewController (webview, true);
 			}
@@ -163,8 +128,6 @@ namespace SipperiOS
 		{
 			return 40;
 		}
-
-
 	} 
 }
 

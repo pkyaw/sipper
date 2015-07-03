@@ -96,13 +96,13 @@
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Sipper.Service.Portable">
-      <HintPath>..\packages\Sipper.Service.Portable.1.0.5654.24589\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Service.Portable.dll</HintPath>
+      <HintPath>..\packages\Sipper.Service.Portable.1.0.5658.21926\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Service.Portable.dll</HintPath>
     </Reference>
     <Reference Include="Sipper.Core">
-      <HintPath>..\packages\Sipper.Service.Portable.1.0.5654.24589\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Core.dll</HintPath>
+      <HintPath>..\packages\Sipper.Service.Portable.1.0.5658.21926\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Core.dll</HintPath>
     </Reference>
     <Reference Include="Sipper.Service.Core">
-      <HintPath>..\packages\Sipper.Service.Portable.1.0.5654.24589\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Service.Core.dll</HintPath>
+      <HintPath>..\packages\Sipper.Service.Portable.1.0.5658.21926\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Service.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -123,9 +123,6 @@
     <InterfaceDefinition Include="ViewController\DetailsViewController.xib" />
     <InterfaceDefinition Include="Cell\DetailScreenCell.xib" />
     <InterfaceDefinition Include="ViewController\WebViewController.xib" />
-    <InterfaceDefinition Include="Cell\HomeCell.xib" />
-    <InterfaceDefinition Include="ViewController\FlagViewController.xib" />
-    <InterfaceDefinition Include="ViewController\FlagView.xib" />
     <InterfaceDefinition Include="ViewController\MapViewController.xib" />
   </ItemGroup>
   <ItemGroup>
@@ -199,24 +196,12 @@
     <Compile Include="ViewController\WebViewController.designer.cs">
       <DependentUpon>WebViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cell\HomeCell.cs" />
-    <Compile Include="Cell\HomeCell.designer.cs">
-      <DependentUpon>HomeCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewController\FlagViewController.cs" />
-    <Compile Include="ViewController\FlagViewController.designer.cs">
-      <DependentUpon>FlagViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewController\FlagView.cs" />
-    <Compile Include="ViewController\FlagView.designer.cs">
-      <DependentUpon>FlagView.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewController\MapViewController.cs" />
     <Compile Include="ViewController\MapViewController.designer.cs">
       <DependentUpon>MapViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppData.cs" />
     <Compile Include="Setup.cs" />
+    <Compile Include="ViewController\AppData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

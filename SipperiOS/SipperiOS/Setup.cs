@@ -41,13 +41,11 @@ namespace SipperiOS
 			builder.RegisterType<PeekService>().As<IPeekService>();
 			builder.RegisterType<ExtraService>().As<IExtraService>();
 			container = builder.Build();
-			//AddUser();
-
 			return container;
 		}
 		public static async void AddUser()
 		{
-			if (AppData.latitude == 0.0 || AppData.longitude == 0.0 || AppData.latitude == null || AppData.longitude == null) { 
+			if (AppData.latitude == 0.0 || AppData.longitude == 0.0 ) { 
 				lat = 0.0;
 				log = 0.0;
 			}
@@ -57,8 +55,6 @@ namespace SipperiOS
 			}
 			using (var scope = container.BeginLifetimeScope ()) {
 				var userService = scope.Resolve<IUserService> ();
-				// Add user
-				//BTProgressHUD.Show("Adding User...");
 				var addUser = await userService.AddUserAsync (new UserModelAdd {
 					DeviceId = deviceId,
 					Lat = lat,
@@ -71,7 +67,6 @@ namespace SipperiOS
 					NSUserDefaults.StandardUserDefaults.SetString (addUser.Model.Id.ToString(), "userId"); 
 					NSUserDefaults.StandardUserDefaults.Synchronize ();
 				}
-				//BTProgressHUD.Dismiss ();
 			}
 		}
 

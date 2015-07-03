@@ -1,16 +1,6 @@
 ﻿<Properties StartupItem="SipperiOS/SipperiOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Harry’s iPhone" />
-  <MonoDevelop.Ide.Workbench>
-    <Files>
-      <File FileName="SipperiOS/ViewController/PeekViewController.cs" Line="68" Column="45" />
-      <File FileName="SipperiOS/AppDelegate.cs" Line="167" Column="4" />
-      <File FileName="SipperiOS/Setup.cs" Line="27" Column="37" />
-      <File FileName="SipperiOS/ViewController/moreViewController.cs" Line="70" Column="48" />
-      <File FileName="SipperiOS/ViewController/StartingScreen.cs" Line="62" Column="34" />
-      <File FileName="SipperiOS/ViewController/DetailsViewController.cs" Line="256" Column="72" />
-      <File FileName="SipperiOS/Main.cs" Line="12" Column="1" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6.8.1" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/harry/Projects/SipperiOS/SipperiOS/ViewController/HomeScreenVC.cs" line="68" column="1" />

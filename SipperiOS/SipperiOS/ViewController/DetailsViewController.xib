@@ -9,6 +9,7 @@
                 <outlet property="btnBack" destination="rAy-8b-svK" id="oM5-X3-Br2"/>
                 <outlet property="btnMap" destination="XUn-3X-bl8" id="Tov-iI-gLr"/>
                 <outlet property="btnSendReply" destination="8oj-OM-jsv" id="B93-lM-cqw"/>
+                <outlet property="btnShare" destination="uCo-04-w1P" id="vsf-5g-Tq4"/>
                 <outlet property="btn_Down" destination="x7O-MI-QtG" id="EqC-I6-nK0"/>
                 <outlet property="btn_flag" destination="Mz5-8g-U4M" id="bld-Ap-ih4"/>
                 <outlet property="btn_up" destination="saG-B1-bcs" id="tqe-cJ-fi8"/>

@@ -41,8 +41,6 @@ namespace SipperiOS
 		}
 		public void UpdateCell (string item)
 		{
-			//imageView.Image = image;
-
 			lb_item.Text = item;
 		}
 

@@ -8,19 +8,18 @@ namespace SipperiOS
 	public partial class WebViewController : UIViewController
 	{
 		public string url;
+		public string name;
 		public WebViewController () : base ("WebViewController", null)
 		{
 		}
-		public WebViewController (string url)
+		public WebViewController (string url,string name)
 		{
 			this.url = url;
+			this.name = name;
 		}
 		public override void DidReceiveMemoryWarning ()
 		{
-			// Releases the view if it doesn't have a superview.
 			base.DidReceiveMemoryWarning ();
-			
-			// Release any cached data, images, etc that aren't in use.
 		}
 
 		public override void ViewDidLoad ()
@@ -30,14 +29,25 @@ namespace SipperiOS
 			NSUrlRequest request = new NSUrlRequest(url1);
 			webView.LoadRequest(request);
 
-			this.NavigationController.NavigationBar.Hidden =  true;
 
+			this.NavigationController.NavigationBar.Hidden =  false;
+			this.NavigationController.NavigationBar.TintColor = UIColor.White;
+			this.NavigationController.NavigationBar.BarTintColor = UIColor.FromRGB(44/255f,146/255f,208/255f);
+			this.NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
+
+			this.NavigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes (){
+				ForegroundColor = UIColor.White,
+				Font = UIFont.FromName("System Bold",20.0f)
+			};
+			Title = name;
+			this.NavigationItem.SetLeftBarButtonItem (new UIBarButtonItem(
+				"Cancel", UIBarButtonItemStyle.Plain, (sender, args) => {
+					this.NavigationController.PopViewController(true);
+				}), true);
 			btn_close.TouchUpInside += (object sender, EventArgs e) => {
 
 				this.NavigationController.PopViewController(true);
 			};
-
-			// Perform any additional setup after loading the view, typically from a nib.
 		}
 	}
 }

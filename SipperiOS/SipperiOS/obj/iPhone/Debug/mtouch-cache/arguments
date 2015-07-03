@@ -38,11 +38,11 @@
 	-r \
 	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/packages/Newtonsoft.Json.7.0.1/lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll \
 	-r \
-	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/packages/Sipper.Service.Portable.1.0.5654.24589/lib/portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Sipper.Service.Portable.dll \
+	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/packages/Sipper.Service.Portable.1.0.5658.21926/lib/portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Sipper.Service.Portable.dll \
 	-r \
-	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/packages/Sipper.Service.Portable.1.0.5654.24589/lib/portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Sipper.Core.dll \
+	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/packages/Sipper.Service.Portable.1.0.5658.21926/lib/portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Sipper.Core.dll \
 	-r \
-	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/packages/Sipper.Service.Portable.1.0.5654.24589/lib/portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Sipper.Service.Core.dll \
+	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/packages/Sipper.Service.Portable.1.0.5658.21926/lib/portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Sipper.Service.Core.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Core.dll \
 	-r \
@@ -144,9 +144,9 @@
 	-r \
 	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/packages/Newtonsoft.Json.7.0.1/lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll \
 	-r \
-	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/packages/Sipper.Service.Portable.1.0.5654.24589/lib/portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Sipper.Service.Portable.dll \
+	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/packages/Sipper.Service.Portable.1.0.5658.21926/lib/portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Sipper.Service.Portable.dll \
 	-r \
-	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/packages/Sipper.Service.Portable.1.0.5654.24589/lib/portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Sipper.Core.dll \
+	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/packages/Sipper.Service.Portable.1.0.5658.21926/lib/portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Sipper.Core.dll \
 	-r \
-	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/packages/Sipper.Service.Portable.1.0.5654.24589/lib/portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Sipper.Service.Core.dll \
+	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/packages/Sipper.Service.Portable.1.0.5658.21926/lib/portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Sipper.Service.Core.dll \
 	/Users/HariWepuri/Project/Sipper/repo/SipperiOS/SipperiOS/bin/iPhone/Debug//SipperiOS.exe \

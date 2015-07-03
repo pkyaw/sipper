@@ -19,7 +19,6 @@ using Autofac;
 using Sipper.Service.Core.Interfaces.v1;
 using Sipper.Service.Portable;
 using Sipper.Service.Portable.v1;
-using SipperShared;
 using Newtonsoft.Json;
 
 
@@ -62,32 +61,9 @@ namespace SipperDroid
 			tvreply = FindViewById<TextView> (Resource.Id.tvReply);
 			ListSipp = new List<SippReplyModel> ();
 
-			llMap.Background.SetAlpha (200);
-			llMap.Click += LlMap_Click;
-			id = Guid.Parse (Intent.GetStringExtra ("id"));
-			description = Intent.GetStringExtra ("description");
-			replies = Intent.GetStringExtra ("replies");
-			date = Intent.GetStringExtra ("distance");
-			lat = Intent.GetDoubleExtra ("lat", 0);
-			lan = Intent.GetDoubleExtra ("lan", 0);
-
-			mapFrag = (MapFragment)FragmentManager.FindFragmentById (Resource.Id.map);
-			map = mapFrag.Map;
-			map.UiSettings.CompassEnabled = true;
-			map.UiSettings.ZoomControlsEnabled = false;
-			map.MyLocationEnabled = false;
-
-			LatLng lastLatLng = new LatLng (lat, lan);
-			map.MoveCamera (CameraUpdateFactory.NewLatLngZoom (lastLatLng, 15));
-			MarkerOptions marker = new MarkerOptions ();
-			marker.SetPosition (new LatLng (lat, lan));
-			map.AddMarker (marker);
-
 			Typeface tf = Typeface.CreateFromAsset (Application.Context.Assets, "fonts/OpenSans-Light.ttf");
 			Typeface tf1 = Typeface.CreateFromAsset (Application.Context.Assets, "fonts/OpenSans-Semibold.ttf");
 			Typeface tf2 = Typeface.CreateFromAsset (Application.Context.Assets, "fonts/OpenSans-Bold.ttf");
-
-			GetSippByIdAsync ();
 
 
 			adapter = new CustomListViewDetail (this, ListSipp);
@@ -98,10 +74,6 @@ namespace SipperDroid
 				ivListEmpty.Visibility = ViewStates.Gone;
 			}
 		
-
-			tvdesc.Text = description;
-			tvtime.Text = date;
-			tvreply.Text = replies;
 
 			tvnumber.SetTypeface (tf, TypefaceStyle.Normal);
 			tvnumber.SetTypeface (tf2, TypefaceStyle.Normal);
@@ -117,37 +89,9 @@ namespace SipperDroid
 			dialog.Show (FragmentManager, "dialog");
 		}
 
-		void LlMap_Click (object sender, EventArgs e)
-		{
-			Intent i = new Intent (this, typeof(MapActivity));
-			i.PutExtra ("lat", lat);
-			i.PutExtra ("lan", lan);
-			Console.WriteLine ("Click Count : ");
-			StartActivity (i);
-		}
 
-		public async void GetSippByIdAsync ()
-		{
-			progress.Show ();
-			try {
-				var container = Setup.RegisterContainerBuilder ();
 
-				using (var scope = container.BeginLifetimeScope ()) {
-					var sippService = scope.Resolve<ISippService> ();
-					Sipp = await sippService.GetSippByIdAsync (id);
-					if (Sipp == null) {
-						System.Console.WriteLine ("Error");
-					} else {
-						ListSipp = Sipp.Replies;
 
-					}
-				}
-				progress.Dismiss ();
-			} catch (Exception e) {
-				Console.WriteLine ("Error : ", e.Message.ToString ());
-				progress.Dismiss ();
-			}
-		}
 
 
 	}

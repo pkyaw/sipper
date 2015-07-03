@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController">
@@ -16,17 +16,25 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j6S-ZP-dEv">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6S-ZP-dEv">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WebView" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkj-Of-xay">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WebView" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkj-Of-xay">
                             <rect key="frame" x="117" y="28" width="86" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="86" id="R4O-MO-C1n"/>
+                                <constraint firstAttribute="height" constant="24" id="kRr-TK-dcQ"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofw-W3-EG9">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofw-W3-EG9">
                             <rect key="frame" x="13" y="26" width="40" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="XmO-zZ-lYR"/>
+                                <constraint firstAttribute="height" constant="30" id="Y40-MD-QIe"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="Close">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -35,13 +43,29 @@
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.1764705882" green="0.60392156860000001" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="Dkj-Of-xay" firstAttribute="top" secondItem="j6S-ZP-dEv" secondAttribute="top" constant="28" id="P7o-Sp-gt4"/>
+                        <constraint firstAttribute="centerX" secondItem="Dkj-Of-xay" secondAttribute="centerX" id="YHk-Zs-2U5"/>
+                        <constraint firstAttribute="height" constant="64" id="dRH-cA-EYn"/>
+                        <constraint firstItem="ofw-W3-EG9" firstAttribute="leading" secondItem="j6S-ZP-dEv" secondAttribute="leading" constant="13" id="m9I-4s-2Z7"/>
+                        <constraint firstItem="ofw-W3-EG9" firstAttribute="top" secondItem="j6S-ZP-dEv" secondAttribute="top" constant="26" id="x1i-sD-pMf"/>
+                    </constraints>
                 </view>
-                <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jof-7M-1Tw">
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jof-7M-1Tw">
                     <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="j6S-ZP-dEv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4xS-1G-wMX"/>
+                <constraint firstAttribute="trailing" secondItem="j6S-ZP-dEv" secondAttribute="trailing" id="5Dx-Yu-8Z6"/>
+                <constraint firstItem="jof-7M-1Tw" firstAttribute="top" secondItem="j6S-ZP-dEv" secondAttribute="bottom" id="7Zg-dY-sxP"/>
+                <constraint firstItem="jof-7M-1Tw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="G7d-YY-4S8"/>
+                <constraint firstAttribute="bottom" secondItem="jof-7M-1Tw" secondAttribute="bottom" id="M6J-ZU-DDj"/>
+                <constraint firstItem="j6S-ZP-dEv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Yk3-Sk-JwV"/>
+                <constraint firstAttribute="trailing" secondItem="jof-7M-1Tw" secondAttribute="trailing" id="qZD-Pj-fWc"/>
+            </constraints>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -248,3 +248,4 @@
 /Users/HariWepuri/Project/Sipper/repo/SipperiOS/SipperiOS/bin/iPhone/Debug/Sipper.Service.Portable.dll
 /Users/HariWepuri/Project/Sipper/repo/SipperiOS/SipperiOS/bin/iPhone/Debug/Sipper.Core.dll
 /Users/HariWepuri/Project/Sipper/repo/SipperiOS/SipperiOS/bin/iPhone/Debug/Sipper.Service.Core.dll
+/Users/HariWepuri/Project/Sipper/repo/SipperiOS/SipperiOS/obj/iPhone/Debug/ibtool/PeekAnyWhereViewController.nib

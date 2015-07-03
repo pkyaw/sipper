@@ -31,6 +31,9 @@ namespace SipperiOS
 		UIKit.UIButton btnSendReply { get; set; }
 
 		[Outlet]
+		UIKit.UIButton btnShare { get; set; }
+
+		[Outlet]
 		UIKit.UILabel lb_Detail { get; set; }
 
 		[Outlet]
@@ -75,6 +78,16 @@ namespace SipperiOS
 				btnMap = null;
 			}
 
+			if (btnSendReply != null) {
+				btnSendReply.Dispose ();
+				btnSendReply = null;
+			}
+
+			if (btnShare != null) {
+				btnShare.Dispose ();
+				btnShare = null;
+			}
+
 			if (lb_Detail != null) {
 				lb_Detail.Dispose ();
 				lb_Detail = null;
@@ -103,11 +116,6 @@ namespace SipperiOS
 			if (tableView != null) {
 				tableView.Dispose ();
 				tableView = null;
-			}
-
-			if (btnSendReply != null) {
-				btnSendReply.Dispose ();
-				btnSendReply = null;
 			}
 		}
 	}

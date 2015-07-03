@@ -4,6 +4,13 @@ using System;
 using Foundation;
 using UIKit;
 using System.Collections.Generic;
+using Sipper.Service.Core.Interfaces.v1;
+using BigTed;
+using Autofac;
+using Sipper.Service.Core.Models.v1;
+using Newtonsoft.Json;
+
+
 namespace SipperiOS
 {
 	public partial class MeViewController : UIViewController
@@ -14,16 +21,15 @@ namespace SipperiOS
 
 		public override void DidReceiveMemoryWarning ()
 		{
-			// Releases the view if it doesn't have a superview.
 			base.DidReceiveMemoryWarning ();
-			
-			// Release any cached data, images, etc that aren't in use.
 		}
-
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+		}
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-
 			this.NavigationController.NavigationBar.Hidden =  false;
 			this.NavigationController.NavigationBar.TintColor = UIColor.White;
 			this.NavigationController.NavigationBar.BarTintColor = UIColor.FromRGB(44/255f,146/255f,208/255f);
@@ -33,7 +39,6 @@ namespace SipperiOS
 				ForegroundColor = UIColor.White,
 				Font = UIFont.FromName("System Bold",20.0f)
 			};
-			//UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes { TextColor = UIColor.White }); 
 			Title = "Me";
 
 			this.NavigationItem.SetLeftBarButtonItem (new UIBarButtonItem(

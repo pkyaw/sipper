@@ -62,8 +62,8 @@ namespace SipperDroid
 			holder.tvRightNumber.SetTypeface (tf, TypefaceStyle.Normal);
 
 
-			holder.tvDescription.Text = item.Text;
-			holder.tvDuration.Text =Utility.GetDateDistance (item.CreatedUtc);
+//			holder.tvDescription.Text = item.Text;
+//			holder.tvDuration.Text =Utility.GetDateDistance (item.CreatedUtc);
 
 			return convertView;
 		}

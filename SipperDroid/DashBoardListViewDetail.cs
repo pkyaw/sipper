@@ -49,7 +49,8 @@ namespace SipperDroid
 
 			SetContentView (Resource.Layout.dashboard_listview_detail);
 			progress = new ProgressDialog (this);
-
+			lat = 37.09035962;
+			lan = -95.71368456;
 			flag = FindViewById<ImageView> (Resource.Id.ivNew1);
 			flag.Click += Flag_Click;
 			ivListEmpty = FindViewById<LinearLayout> (Resource.Id.ivEmptylist);
@@ -73,8 +74,20 @@ namespace SipperDroid
 			} else {
 				ivListEmpty.Visibility = ViewStates.Gone;
 			}
-		
 
+			mapFrag = (MapFragment)FragmentManager.FindFragmentById (Resource.Id.map);
+			map = mapFrag.Map;
+			map.UiSettings.CompassEnabled = true;
+			map.UiSettings.ZoomControlsEnabled = false;
+			map.MyLocationEnabled = false;
+
+			LatLng lastLatLng = new LatLng (lat, lan);
+			map.MoveCamera (CameraUpdateFactory.NewLatLngZoom (lastLatLng, 15));
+			MarkerOptions marker = new MarkerOptions ();
+			marker.SetPosition (new LatLng (lat, lan));
+			map.AddMarker (marker);
+			llMap.Background.SetAlpha (200);
+			llMap.Click += LlMap_Click;
 			tvnumber.SetTypeface (tf, TypefaceStyle.Normal);
 			tvnumber.SetTypeface (tf2, TypefaceStyle.Normal);
 			tvtime.SetTypeface (tf1, TypefaceStyle.Normal);
@@ -89,6 +102,14 @@ namespace SipperDroid
 			dialog.Show (FragmentManager, "dialog");
 		}
 
+		void LlMap_Click (object sender, EventArgs e)
+		{
+			Intent i = new Intent (this, typeof(MapActivity));
+			i.PutExtra ("lat", lat);
+			i.PutExtra ("lan", lan);
+			Console.WriteLine ("Click Count : ");
+			StartActivity (i);
+		}
 
 
 

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.sipperdroid">
-	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="21" />
+	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="19" />
 	<application android:label="SipperDroid" android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
 		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyA84SE5GZs8UMElimV5WVGpDCV8vNBE6LY" />
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />

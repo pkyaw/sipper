@@ -56,13 +56,17 @@ namespace SipperDroid
 				holder.imageDown = convertView.FindViewById<ImageView> (Resource.Id.ImageDown);
 				holder.tvRightNumber.Text = Convert.ToString (list [position].duration);
 				holder.tvHandle = convertView.FindViewById<TextView> (Resource.Id.tvHandle);
-
+	
 				holder.imageUp.Click += (object sender, EventArgs e) => {
+					upCount = list [position].duration++;
+					downCount = list [position].downCount;
 					upCount = upCount + 1;
 					holder.tvRightNumber.Text = Convert.ToString (upCount - downCount);
 				};
 
 				holder.imageDown.Click += (object sender, EventArgs e) => {
+					upCount = list [position].duration;
+					downCount = list [position].downCount++;
 					downCount = downCount + 1;
 					holder.tvRightNumber.Text = Convert.ToString (upCount - downCount);
 				};

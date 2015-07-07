@@ -1,6 +1,12 @@
-﻿<Properties StartupItem="SipperiOS/SipperiOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6.8.1" />
-  <MonoDevelop.Ide.Workbench />
+﻿<Properties StartupItem="..\SipperDroid\SipperDroid.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\SipperDroid\MapActivity.cs">
+    <Files>
+      <File FileName="..\SipperDroid\DashBoardListViewDetail.cs" Line="103" Column="3" />
+      <File FileName="..\SipperDroid\MapActivity.cs" Line="31" Column="22" />
+      <File FileName="..\SipperDroid\packages.config" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/harry/Projects/SipperiOS/SipperiOS/ViewController/HomeScreenVC.cs" line="68" column="1" />

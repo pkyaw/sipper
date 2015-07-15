@@ -1,11 +1,11 @@
+SipperDroid.App, SipperDroid;md529692d5e20badb16c9c8b3d0e30e8f0a.App
+SipperDroid.App, SipperDroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md529692d5e20badb16c9c8b3d0e30e8f0a.App
+SipperDroid.App;md529692d5e20badb16c9c8b3d0e30e8f0a.App
+sipperdroid.App;md529692d5e20badb16c9c8b3d0e30e8f0a.App
 SipperDroid.MainActivity, SipperDroid;md529692d5e20badb16c9c8b3d0e30e8f0a.MainActivity
 SipperDroid.MainActivity, SipperDroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md529692d5e20badb16c9c8b3d0e30e8f0a.MainActivity
 SipperDroid.MainActivity;md529692d5e20badb16c9c8b3d0e30e8f0a.MainActivity
 sipperdroid.MainActivity;md529692d5e20badb16c9c8b3d0e30e8f0a.MainActivity
-SipperDroid.DashBorad, SipperDroid;md529692d5e20badb16c9c8b3d0e30e8f0a.DashBorad
-SipperDroid.DashBorad, SipperDroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md529692d5e20badb16c9c8b3d0e30e8f0a.DashBorad
-SipperDroid.DashBorad;md529692d5e20badb16c9c8b3d0e30e8f0a.DashBorad
-sipperdroid.DashBorad;md529692d5e20badb16c9c8b3d0e30e8f0a.DashBorad
 SipperDroid.CustomListView, SipperDroid;md529692d5e20badb16c9c8b3d0e30e8f0a.CustomListView
 SipperDroid.CustomListView, SipperDroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md529692d5e20badb16c9c8b3d0e30e8f0a.CustomListView
 SipperDroid.CustomListView;md529692d5e20badb16c9c8b3d0e30e8f0a.CustomListView
@@ -62,14 +62,14 @@ SipperDroid.DetailDialogFragment, SipperDroid;md529692d5e20badb16c9c8b3d0e30e8f0
 SipperDroid.DetailDialogFragment, SipperDroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md529692d5e20badb16c9c8b3d0e30e8f0a.DetailDialogFragment
 SipperDroid.DetailDialogFragment;md529692d5e20badb16c9c8b3d0e30e8f0a.DetailDialogFragment
 sipperdroid.DetailDialogFragment;md529692d5e20badb16c9c8b3d0e30e8f0a.DetailDialogFragment
-SipperDroid.PreferenceManager1, SipperDroid;md529692d5e20badb16c9c8b3d0e30e8f0a.PreferenceManager1
-SipperDroid.PreferenceManager1, SipperDroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md529692d5e20badb16c9c8b3d0e30e8f0a.PreferenceManager1
-SipperDroid.PreferenceManager1;md529692d5e20badb16c9c8b3d0e30e8f0a.PreferenceManager1
-sipperdroid.PreferenceManager1;md529692d5e20badb16c9c8b3d0e30e8f0a.PreferenceManager1
 SipperDroid.MapActivity, SipperDroid;md529692d5e20badb16c9c8b3d0e30e8f0a.MapActivity
 SipperDroid.MapActivity, SipperDroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md529692d5e20badb16c9c8b3d0e30e8f0a.MapActivity
 SipperDroid.MapActivity;md529692d5e20badb16c9c8b3d0e30e8f0a.MapActivity
 sipperdroid.MapActivity;md529692d5e20badb16c9c8b3d0e30e8f0a.MapActivity
+SipperDroid.HomeActivity, SipperDroid;md529692d5e20badb16c9c8b3d0e30e8f0a.HomeActivity
+SipperDroid.HomeActivity, SipperDroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md529692d5e20badb16c9c8b3d0e30e8f0a.HomeActivity
+SipperDroid.HomeActivity;md529692d5e20badb16c9c8b3d0e30e8f0a.HomeActivity
+sipperdroid.HomeActivity;md529692d5e20badb16c9c8b3d0e30e8f0a.HomeActivity
 Android.Gms.Ads.DoubleClick.IAppEventListenerImplementor, GooglePlayServicesLib;mono.com.google.android.gms.ads.doubleclick.AppEventListenerImplementor
 Android.Gms.Ads.DoubleClick.IAppEventListenerImplementor, GooglePlayServicesLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.google.android.gms.ads.doubleclick.AppEventListenerImplementor
 Android.Gms.Ads.DoubleClick.IAppEventListenerImplementor;mono.com.google.android.gms.ads.doubleclick.AppEventListenerImplementor

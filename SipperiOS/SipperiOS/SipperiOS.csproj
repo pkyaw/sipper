@@ -9,6 +9,8 @@
     <RootNamespace>SipperiOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>SipperiOS</AssemblyName>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,14 +22,21 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>i386</MtouchArch>
-    <MtouchDebug>true</MtouchDebug>
-    <MtouchProfiling>true</MtouchProfiling>
+    <MtouchDebug>True</MtouchDebug>
+    <MtouchProfiling>True</MtouchProfiling>
     <CodesignKey>iPhone Developer: Satish Mugala (XR297929LH)</CodesignKey>
     <CodesignProvision>d0715ed3-ff14-4fce-9c0c-3a32aa11dc30</CodesignProvision>
-    <MtouchSdkVersion>8.1</MtouchSdkVersion>
-    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchSdkVersion>
+    </MtouchSdkVersion>
+    <MtouchUseRefCounting>True</MtouchUseRefCounting>
     <MtouchI18n>
     </MtouchI18n>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchFastDev>False</MtouchFastDev>
+    <MtouchUseLlvm>False</MtouchUseLlvm>
+    <MtouchUseThumb>False</MtouchUseThumb>
+    <MtouchUseSGen>False</MtouchUseSGen>
+    <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -76,7 +85,22 @@
     <MtouchSdkVersion>8.1</MtouchSdkVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Sipper.Core, Version=1.0.5673.39561, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sipper.Service.Portable.1.0.5674.19731\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sipper.Service.Core, Version=1.0.5673.39842, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sipper.Service.Portable.1.0.5674.19731\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Service.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sipper.Service.Portable, Version=1.0.5674.19731, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sipper.Service.Portable.1.0.5674.19731\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Service.Portable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Collections" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
@@ -94,15 +118,6 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Sipper.Service.Portable">
-      <HintPath>..\packages\Sipper.Service.Portable.1.0.5658.21926\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Service.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="Sipper.Core">
-      <HintPath>..\packages\Sipper.Service.Portable.1.0.5658.21926\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Sipper.Service.Core">
-      <HintPath>..\packages\Sipper.Service.Portable.1.0.5658.21926\lib\portable-net45+win+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Sipper.Service.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -206,11 +221,7 @@
     <Compile Include="ViewController\AppData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="ViewController\" />
-    <Folder Include="Font\" />
-    <Folder Include="Cell\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BundleResource Include="Resources\bg_with_logo.png" />
     <BundleResource Include="Resources\bg_with_logo%402x.png" />
@@ -313,4 +324,11 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
 </Project>

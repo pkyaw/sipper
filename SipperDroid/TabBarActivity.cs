@@ -27,7 +27,7 @@ namespace SipperDroid
 			_tabHost = FindViewById<TabHost>(Android.Resource.Id.TabHost);
 			_tabHost.Setup();
 
-			CreateTab(typeof(DashBorad), "Home", "", Resource.Drawable.dashboard_selector);
+			CreateTab(typeof(HomeActivity), "Home", "", Resource.Drawable.dashboard_selector);
 			CreateTab(typeof(PeekActivity), "Peek", "", Resource.Drawable.peek_selector);
 			CreateTab(typeof(MeActivity), "Me", "", Resource.Drawable.me_selector);
 			CreateTab(typeof(MoreActivity), "More", "", Resource.Drawable.more_selector);

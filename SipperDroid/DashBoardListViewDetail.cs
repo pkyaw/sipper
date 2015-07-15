@@ -1,27 +1,15 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.Graphics;
-using Android.Net;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using Android.Graphics;
+using Android.OS;
+using Android.Views;
+using Android.Widget;
 using Sipper.Service.Core.Models.v1;
-using Autofac;
-using Sipper.Service.Core.Interfaces.v1;
-using Sipper.Service.Portable;
-using Sipper.Service.Portable.v1;
-using Newtonsoft.Json;
-
-
 
 namespace SipperDroid
 {

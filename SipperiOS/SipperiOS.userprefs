@@ -1,17 +1,28 @@
 ﻿<Properties StartupItem="..\SipperDroid\SipperDroid.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\SipperDroid\MapActivity.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\SipperDroid\HomeActivity.cs">
     <Files>
-      <File FileName="..\SipperDroid\DashBoardListViewDetail.cs" Line="103" Column="3" />
-      <File FileName="..\SipperDroid\MapActivity.cs" Line="31" Column="22" />
-      <File FileName="..\SipperDroid\packages.config" Line="1" Column="1" />
+      <File FileName="..\SipperDroid\App.cs" Line="17" Column="40" />
+      <File FileName="..\SipperDroid\MainActivity.cs" Line="1" Column="1" />
+      <File FileName="..\SipperDroid\HomeActivity.cs" Line="38" Column="60" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>Click here to add a new watch</Value>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/harry/Projects/SipperiOS/SipperiOS/ViewController/HomeScreenVC.cs" line="68" column="1" />
+      <Breakpoint file="F:\Projects\Sipper Mobile\SipperDroid\DashBoardListViewDetail.cs" line="51" column="1" />
+      <Breakpoint file="F:\Projects\Sipper Mobile\SipperDroid\DashBorad.cs" line="108" column="1" />
+      <Breakpoint file="F:\Projects\Sipper Mobile\SipperDroid\HomeActivity.cs" line="57" column="1" />
+      <Breakpoint file="F:\Projects\Sipper Mobile\SipperDroid\HomeActivity.cs" line="44" column="1" />
+      <Breakpoint file="F:\Projects\Sipper Mobile\SipperDroid\App.cs" line="25" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.SipperDroid AndroidDesignerPreferredDevice="Nexus 4" AndroidDesignerPreferredTheme="Theme.DeviceDefault" />
 </Properties>

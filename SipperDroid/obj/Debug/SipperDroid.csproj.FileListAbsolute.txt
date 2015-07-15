@@ -17,12 +17,6 @@ F:\Projects\Sipper Mobile\SipperDroid\bin\Debug\Refractored.PagerSlidingTabStrip
 F:\Projects\Sipper Mobile\SipperDroid\bin\Debug\Refractored.PagerSlidingTabStrip.dll.mdb
 F:\Projects\Sipper Mobile\SipperDroid\bin\Debug\Autofac.xml
 F:\Projects\Sipper Mobile\SipperDroid\bin\Debug\Newtonsoft.Json.xml
-F:\Projects\Sipper Mobile\SipperDroid\bin\Debug\Sipper.Service.Portable.pdb
-F:\Projects\Sipper Mobile\SipperDroid\bin\Debug\Sipper.Service.Portable.dll.mdb
-F:\Projects\Sipper Mobile\SipperDroid\bin\Debug\Sipper.Core.pdb
-F:\Projects\Sipper Mobile\SipperDroid\bin\Debug\Sipper.Core.dll.mdb
-F:\Projects\Sipper Mobile\SipperDroid\bin\Debug\Sipper.Service.Core.pdb
-F:\Projects\Sipper Mobile\SipperDroid\bin\Debug\Sipper.Service.Core.dll.mdb
 F:\Projects\Sipper Mobile\SipperDroid\obj\Debug\SipperDroid.csprojResolveAssemblyReference.cache
 F:\Projects\Sipper Mobile\SipperDroid\obj\Debug\SipperDroid.dll
 F:\Projects\Sipper Mobile\SipperDroid\obj\Debug\SipperDroid.pdb

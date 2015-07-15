@@ -1,108 +1,111 @@
 ﻿using System;
-using Android.App;
 using System.Collections.Generic;
-using Android.Widget;
-using Android.Views;
+using System.Globalization;
+using Android.App;
 using Android.Graphics;
-using Android.Content;
+using Android.Views;
+using Android.Widget;
 using Sipper.Service.Core.Models.v1;
-
+using Object = Java.Lang.Object;
 
 namespace SipperDroid
 {
-	public class CustomListView: BaseAdapter<post>
-	{
-		Activity context;
-		List<post> list;
-		post item;
-		int upCount, downCount;
+    public class CustomListView : BaseAdapter<SippModel>
+    {
+        readonly Activity _context;
+        private readonly List<SippModel> _list;
 
-		public CustomListView (Activity _context, List<post> _list)
-			: base ()
-		{
-			this.context = _context;
-			this.list = _list;
-		}
+        public CustomListView(Activity context, List<SippModel> list)
+        {
+            _context = context;
+            _list = list;
+        }
 
-		public override int Count {
-			get { return list.Count; }
-		}
+        public override int Count
+        {
+            get { return _list.Count; }
+        }
 
-		public override long GetItemId (int position)
-		{
-			return position;
-		}
+        public override long GetItemId(int position)
+        {
+            return position;
+        }
 
-		public override post this [int index] {
-			get { return list [index]; }
-		}
+        public override SippModel this[int index]
+        {
+            get { return _list[index]; }
+        }
 
 
-		public override View GetView (int position, View convertView, ViewGroup parent)
-		{
-			Viewholder holder;
-			Typeface tf = Typeface.CreateFromAsset (Application.Context.Assets, "fonts/OpenSans-Regular.ttf");
+        public override View GetView(int position, View convertView, ViewGroup parent)
+        {
+            Viewholder holder;
+            Typeface tf = Typeface.CreateFromAsset(Application.Context.Assets, "fonts/OpenSans-Regular.ttf");
 
-			item = this [position];
-			if (convertView == null) {
-				convertView = context.LayoutInflater.Inflate (Resource.Layout.list_view_adapter, parent, false);
-				holder = new Viewholder ();
-			
-				holder.tvDescription = convertView.FindViewById<TextView> (Resource.Id.Text1);
-				holder.tvRightNumber = convertView.FindViewById<TextView> (Resource.Id.Text2);
-				holder.tvDuration = convertView.FindViewById<TextView> (Resource.Id.tvTime);
-				holder.tvReply = convertView.FindViewById<TextView> (Resource.Id.tvReply);
-				holder.imageUp = convertView.FindViewById<ImageView> (Resource.Id.ImageUp);
-				holder.imageDown = convertView.FindViewById<ImageView> (Resource.Id.ImageDown);
-				holder.tvRightNumber.Text = Convert.ToString (list [position].duration);
-				holder.tvHandle = convertView.FindViewById<TextView> (Resource.Id.tvHandle);
-	
-				holder.imageUp.Click += (object sender, EventArgs e) => {
-					upCount = list [position].duration++;
-					downCount = list [position].downCount;
-					upCount = upCount + 1;
-					holder.tvRightNumber.Text = Convert.ToString (upCount - downCount);
-				};
+            var item = _list[position];
+            if (convertView == null)
+            {
+                convertView = _context.LayoutInflater.Inflate(Resource.Layout.list_view_adapter, parent, false);
+                holder = new Viewholder
+                {
+                    tvDescription = convertView.FindViewById<TextView>(Resource.Id.Text1),
+                    tvRightNumber = convertView.FindViewById<TextView>(Resource.Id.Text2),
+                    tvDuration = convertView.FindViewById<TextView>(Resource.Id.tvTime),
+                    tvReply = convertView.FindViewById<TextView>(Resource.Id.tvReply),
+                    imageUp = convertView.FindViewById<ImageView>(Resource.Id.ImageUp),
+                    imageDown = convertView.FindViewById<ImageView>(Resource.Id.ImageDown)
+                };
 
-				holder.imageDown.Click += (object sender, EventArgs e) => {
-					upCount = list [position].duration;
-					downCount = list [position].downCount++;
-					downCount = downCount + 1;
-					holder.tvRightNumber.Text = Convert.ToString (upCount - downCount);
-				};
-				convertView.Tag = holder;
-			} else {
-				holder = (Viewholder)convertView.Tag;
-			}
+                holder.tvRightNumber.Text = _list[position].Distance.ToString(CultureInfo.InvariantCulture);
+                holder.tvHandle = convertView.FindViewById<TextView>(Resource.Id.tvHandle);
 
-			holder.tvDescription.SetTypeface (tf, TypefaceStyle.Normal);
-			holder.tvDuration.SetTypeface (tf, TypefaceStyle.Normal);
-			holder.tvRightNumber.SetTypeface (tf, TypefaceStyle.Normal);
-			holder.tvReply.SetTypeface (tf, TypefaceStyle.Normal);
+                holder.imageUp.Click += (sender, e) =>
+                {
+                    _list[position].UpVoteCount++;
+                    holder.tvRightNumber.Text = (item.UpVoteCount - item.DownVoteCount).ToString();
+                };
 
-			holder.tvDescription.Text = item.description;
-			holder.tvReply.Text = item.reply;
-			holder.tvDuration.Text = item.hour;
+                holder.imageDown.Click += (sender, e) =>
+                {
 
-			return convertView;
-		}
+                    _list[position].DownVoteCount++;
+                    holder.tvRightNumber.Text = (item.UpVoteCount - item.DownVoteCount).ToString();
+                };
+                convertView.Tag = holder;
+            }
+            else
+            {
+                holder = (Viewholder)convertView.Tag;
+            }
 
-		public class Viewholder : Java.Lang.Object
-		{
-			public TextView tvDescription { get; set; }
+            holder.tvDescription.SetTypeface(tf, TypefaceStyle.Normal);
+            holder.tvDuration.SetTypeface(tf, TypefaceStyle.Normal);
+            holder.tvRightNumber.SetTypeface(tf, TypefaceStyle.Normal);
+            holder.tvReply.SetTypeface(tf, TypefaceStyle.Normal);
 
-			public TextView tvReply { get; set; }
+            holder.tvDescription.Text = item.Text;
+            //holder.tvReply.Text = item.reply;
+            holder.tvDuration.Text = item.Distance.ToString(CultureInfo.InvariantCulture);
 
-			public TextView tvDuration{ get; set; }
+            return convertView;
+        }
 
-			public TextView tvRightNumber{ get; set; }
+        public class Viewholder : Object
+        {
+            public TextView tvDescription { get; set; }
 
-			public TextView tvHandle{ get; set; }
+            public TextView tvReply { get; set; }
 
-			public ImageView imageUp{ get; set; }
+            public TextView tvDuration { get; set; }
 
-			public ImageView imageDown{ get; set; }
-		}
-	}
+            public TextView tvRightNumber { get; set; }
+
+            public TextView tvHandle { get; set; }
+
+            public ImageView imageUp { get; set; }
+
+            public ImageView imageDown { get; set; }
+        }
+    }
 }
 

@@ -1,25 +1,25 @@
 ﻿using System;
+using System.Linq;
 using Android.App;
 using Android.Graphics;
-using Android.OS;
-using Android.Widget;
 using Android.Locations;
+using Android.OS;
 using Android.Util;
-using System.Collections.Generic;
-using System.Linq;
+using Android.Widget;
 
 namespace SipperDroid
 {
-	[Activity (Label = "SipperDroid", MainLauncher = true, Icon = "@drawable/icon")]
+	[Activity (Label = "Sipper", MainLauncher = true, Icon = "@drawable/icon")]
 	public class MainActivity : Activity, ILocationListener
 	{
-		static readonly string LogTag = "Sipper";
+		static readonly string LogTag = "@string/log_prefix";
 		private TextView _tvContinue;
 		private TextView _tvDescription;
 		string _locationProvider;
-
-		public static Location CurrentLocation;
-		LocationManager _locationManager;
+		private Location _currentLocation;
+		private LocationManager _locationManager;
+	    public static double Latitude = 1000;
+	    public static double Longitude = 1000;
 
 
 		protected override void OnCreate (Bundle bundle)
@@ -31,40 +31,33 @@ namespace SipperDroid
 			_tvDescription = FindViewById<TextView> (Resource.Id.tvDescription);
 			_tvDescription.SetTypeface (tf, TypefaceStyle.Normal);
 			_tvContinue = FindViewById<TextView> (Resource.Id.tvContinue);
-			_tvContinue.Click += TvContinue_Click;
-
-			InitializeLocationManager ();
+			_tvContinue.Click += Continue_Click;
+			InitializeLocationManager();
 		}
 
 		void InitializeLocationManager()
 		{
 			_locationManager = (LocationManager)GetSystemService(LocationService);
-			Criteria criteriaForLocationService = new Criteria
+			var criteriaForLocationService = new Criteria
 			{
 				Accuracy = Accuracy.Fine
 			};
 			var acceptableLocationProviders = _locationManager.GetProviders(criteriaForLocationService, true);
-
-			if (acceptableLocationProviders.Any())
-			{
-				_locationProvider = acceptableLocationProviders.First();
-			}
-			else
-			{
-				_locationProvider = String.Empty;
-			}
+			_locationProvider = acceptableLocationProviders.Any() ? acceptableLocationProviders.First() : string.Empty;
 		}
 
 		public void OnLocationChanged(Location location)
 		{
-			CurrentLocation = location;
-			if (CurrentLocation == null)
+			_currentLocation = location;
+			if (_currentLocation == null)
 			{
 				Log.Debug(LogTag, "Unable to determine your location.");
 			}
 			else
 			{
-				Log.Debug(LogTag, String.Format("{0},{1}", CurrentLocation.Latitude, CurrentLocation.Longitude));
+			    Latitude = _currentLocation.Latitude;
+			    Longitude = _currentLocation.Longitude;
+				Log.Debug(LogTag, String.Format("{0},{1}", _currentLocation.Latitude, _currentLocation.Longitude));
 			}
 		}
 
@@ -84,7 +77,7 @@ namespace SipperDroid
 		protected override void OnResume()
 		{
 			base.OnResume();
-			_locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
+			_locationManager.RequestLocationUpdates(_locationProvider, 20000, 800, this);
 			Log.Debug(LogTag, "Listening for location updates using " + _locationProvider + ".");
 		}
 
@@ -95,7 +88,7 @@ namespace SipperDroid
 			Log.Debug(LogTag, "No longer listening for location updates.");
 		}
 
-		void TvContinue_Click (object sender, EventArgs e)
+		void Continue_Click (object sender, EventArgs e)
 		{
 			StartActivity (typeof(TabBarActivity));
 			

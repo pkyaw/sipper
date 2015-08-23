@@ -4226,7 +4226,7 @@ namespace SipperDroid
 			public const int decline = 2131099679;
 			
 			// aapt resource value: 0x7f06003f
-			public const int hello = 2131099711;
+			public const int log_prefix = 2131099711;
 			
 			// aapt resource value: 0x7f060000
 			public const int mr_media_route_button_content_description = 2131099648;

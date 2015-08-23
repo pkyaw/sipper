@@ -1,0 +1,16 @@
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\bin\iPhone\Debug\SipperiOS.exe
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\bin\iPhone\Debug\SipperiOS.pdb
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\bin\iPhone\Debug\Autofac.dll
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\bin\iPhone\Debug\BTProgressHUD.dll
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\bin\iPhone\Debug\Calabash.dll
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\bin\iPhone\Debug\GoogleMaps.dll
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\bin\iPhone\Debug\Newtonsoft.Json.dll
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\bin\iPhone\Debug\Sipper.Core.dll
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\bin\iPhone\Debug\Sipper.Service.Core.dll
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\bin\iPhone\Debug\Sipper.Service.Portable.dll
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\bin\iPhone\Debug\Autofac.xml
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\bin\iPhone\Debug\Newtonsoft.Json.xml
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\obj\iPhone\Debug\
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\obj\iPhone\Debug\SipperiOS.csprojResolveAssemblyReference.cache
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\obj\iPhone\Debug\SipperiOS.exe
+F:\Projects\Sipper Mobile\SipperiOS\SipperiOS\obj\iPhone\Debug\SipperiOS.pdb

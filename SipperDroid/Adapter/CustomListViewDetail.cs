@@ -17,8 +17,8 @@ namespace SipperDroid
 		public CustomListViewDetail (Activity _context, List<SippReplyModel> _list)
 			: base ()
 		{
-			this.context = _context;
-			this.list = _list;
+			context = _context;
+			list = _list;
 		}
 
 		public override int Count {

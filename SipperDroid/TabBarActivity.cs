@@ -1,16 +1,10 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.Graphics;
+using Android.OS;
+using Android.Widget;
 
 namespace SipperDroid
 {
@@ -27,7 +21,7 @@ namespace SipperDroid
 			_tabHost = FindViewById<TabHost>(Android.Resource.Id.TabHost);
 			_tabHost.Setup();
 
-			CreateTab(typeof(HomeActivity), "Home", "", Resource.Drawable.dashboard_selector);
+			CreateTab(typeof(SippsActivity), "Sipps", "", Resource.Drawable.dashboard_selector);
 			CreateTab(typeof(PeekActivity), "Peek", "", Resource.Drawable.peek_selector);
 			CreateTab(typeof(MeActivity), "Me", "", Resource.Drawable.me_selector);
 			CreateTab(typeof(MoreActivity), "More", "", Resource.Drawable.more_selector);

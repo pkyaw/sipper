@@ -1,13 +1,14 @@
 using System;
+using System.Threading.Tasks;
 using Android.App;
-using Android.Content;
+using Android.Preferences;
 using Android.Runtime;
+using Android.Util;
 using Autofac;
 using Sipper.Service.Core.Interfaces.v1;
 using Sipper.Service.Core.Models.v1;
 using Sipper.Service.Portable;
 using Sipper.Service.Portable.v1;
-using Android.Preferences;
 
 namespace SipperDroid
 {
@@ -20,8 +21,6 @@ namespace SipperDroid
 
 		public App (IntPtr h, JniHandleOwnership jho) : base (h, jho)
 		{
-
-
 			Guid userId;
 			if (!Guid.TryParse (LoadPreference (SipperPreference.UserId), out userId)) {
 				userId = Guid.NewGuid ();
@@ -42,28 +41,38 @@ namespace SipperDroid
 			Container = builder.Build ();
 		}
 
-		public override async void OnCreate ()
+		public async override void OnCreate ()
 		{
-
-			using (var scope = Container.BeginLifetimeScope ()) {
-				var userService = scope.Resolve<IUserService> ();
-				var user = await userService.GetByIdAsync (User.Id);
-				if (user == null) {
-					var result = await userService.AddUserAsync (new UserModelAdd{ DeviceId = User.DeviceId });
-					if (result.IsSuccess) {
-						User = result.Model;
-						SavePreference (SipperPreference.UserId, User.Id.ToString ());
-						SavePreference (SipperPreference.DeviceId, User.DeviceId.ToString ());
-					} else {
-						throw new Exception ("User cannot be registered");
-					}
-				} else {
-					User = user;
-				}
-
-			}
-			base.OnCreate ();
+			base.OnCreate();
+		    await GetOrCreateUser();
 		}
+
+	    private async Task GetOrCreateUser()
+	    {
+            using (var scope = Container.BeginLifetimeScope())
+            {
+                var userService = scope.Resolve<IUserService>();
+                var user = await userService.GetByIdAsync(User.Id);
+                if (user == null)
+                {
+                    var result = await userService.AddUserAsync(new UserModelAdd { DeviceId = User.DeviceId });
+                    if (result.IsSuccess)
+                    {
+                        User = result.Model;
+                        SavePreference(SipperPreference.UserId, User.Id.ToString());
+                        SavePreference(SipperPreference.DeviceId, User.DeviceId.ToString());
+                    }
+                    else
+                    {
+                        Log.Debug("@string/log_prefix", "User cannot be registered");
+                    }
+                }
+                else
+                {
+                    User = user;
+                }
+            }
+	    }
 
 		private void SavePreference (SipperPreference preference, string value)
 		{			

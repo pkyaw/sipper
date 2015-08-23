@@ -15,7 +15,7 @@
     <AndroidApplication>True</AndroidApplication>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <AssemblyName>SipperDroid</AssemblyName>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\SipperiOS\</SolutionDir>
@@ -104,7 +104,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Adapter\CustomListView.cs" />
+    <Compile Include="Adapter\SippsAdapter.cs" />
     <Compile Include="DashBoardListViewDetail.cs" />
     <Compile Include="custom_dialog.cs" />
     <Compile Include="PeekActivity.cs" />
@@ -115,12 +115,12 @@
     <Compile Include="Fragment\FirstFragment.cs" />
     <Compile Include="Fragment\SecondFragment.cs" />
     <Compile Include="Adapter\CustomListViewDetail.cs" />
-    <Compile Include="SendSipper.cs" />
+    <Compile Include="NewSipp.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Fragment\DetailDialogFragment.cs" />
     <Compile Include="PreferenceManager1.cs" />
     <Compile Include="MapActivity.cs" />
-    <Compile Include="HomeActivity.cs" />
+    <Compile Include="SippsActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
